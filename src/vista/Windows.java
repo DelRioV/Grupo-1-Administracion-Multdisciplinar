@@ -17,6 +17,9 @@ public interface Windows {
     //Method that create the different ComboBox
     public void createJComboBox(int numComboBoxes);
 
+    //Method that create the different TextArea
+    public void createTextArea(int numTextArea);
+
     //Method that set the different properties of the window
     public void setDifferentProperties();
 

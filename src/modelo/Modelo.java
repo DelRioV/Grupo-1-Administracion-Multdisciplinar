@@ -12,10 +12,18 @@ public class Modelo {
 
     private final static int LENGTHTEXTFIELDS = 20;
 
+    private final static String SENDMAILWINDOWNAME = "Enviar correo electrónico";
+    private final static int SENDMAILWINDOWNUMBTNS = 2;
+    private final static int SENDMAILWINDOWTNUMEXTFIELDS = 2;
+    private final static int SENDMAILWINDOWNUMTEXTAREA = 1;
+    private final static int SENDMAILWINDOWNUMLABELS = 3;
+    private final static int SENDMAILWINDOWNUMPANELS = 1;
+    private final static String[] SENDMAILWINDOWLABELTXT = {"Correo", "Asunto", "Mensaje"};
+    private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
+
     public int getLengthtextfields(){
         return LENGTHTEXTFIELDS;
     }
-
     public String getLoginwindowname(){
         return LOGINWINDOWNAME;
     }
@@ -38,4 +46,28 @@ public class Modelo {
      return LOGINWINDOWBUTTONSAME;
     }
 
+    public static String getSENDMAILWINDOWNAME() {
+        return SENDMAILWINDOWNAME;
+    }
+    public static int getSENDMAILWINDOWNUMBTNS() {
+        return SENDMAILWINDOWNUMBTNS;
+    }
+    public static int getSENDMAILWINDOWTNUMEXTFIELDS() {
+        return SENDMAILWINDOWTNUMEXTFIELDS;
+    }
+    public static int getSENDMAILWINDOWNUMTEXTAREA() {
+        return SENDMAILWINDOWNUMTEXTAREA;
+    }
+    public static int getSENDMAILWINDOWNUMLABELS() {
+        return SENDMAILWINDOWNUMLABELS;
+    }
+    public static int getSENDMAILWINDOWNUMPANELS() {
+        return SENDMAILWINDOWNUMPANELS;
+    }
+    public static String[] getSENDMAILWINDOWLABELTXT() {
+        return SENDMAILWINDOWLABELTXT;
+    }
+    public static String[] getSENDMAILWINDOWBTNSTXT() {
+        return SENDMAILWINDOWBTNSTXT;
+    }
 }

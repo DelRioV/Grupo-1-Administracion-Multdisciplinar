@@ -53,16 +53,22 @@ public class Sender {
      */
     public void send(String from, String to, String subject, String content) {
         // Get the Session object.// and pass username and password
-        Session session = createSession();
+        Properties prop = createSession();
+
+        Session session = Session.getDefaultInstance(prop);
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));   //Se podrían añadir varios de la misma manera
             message.setSubject(subject);
-            message.setContent(content, "text/html");
-            Transport.send(message);
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
+            message.setText(content);
+            Transport transport = session.getTransport("smtp");
+            transport.connect("smtp.gmail.com", to, "whvazoisbscigaek");
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }
+        catch (MessagingException me) {
+            me.printStackTrace();   //Si se produce un error
         }
 
     }
@@ -72,15 +78,16 @@ public class Sender {
      *
      * @return session - Session
      */
-    private Session createSession() {
-        Session session = Session.getInstance(mailProp, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(credentialProp.getProperty(CredentialsConstants.USER),
-                        credentialProp.getProperty(CredentialsConstants.PASSWD));
-            }
-        });
-        session.setDebug(true);
-        return session;
+    private Properties createSession() {
+        Properties props = System.getProperties();
+        props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+        props.put("mail.smtp.user", "Xxismaelor03xX@gmail.com");
+        props.put("mail.smtp.clave", "whvazoisbscigaek");    //La clave de la cuenta
+        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
+        props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
+        props.put("mail.smtp.port", "587");
+        //Session session = Session.getInstance(props);
+        return props;
     }
 
 

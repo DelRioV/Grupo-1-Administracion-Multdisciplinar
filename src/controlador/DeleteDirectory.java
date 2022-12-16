@@ -13,7 +13,7 @@ public class DeleteDirectory implements ActionListener {
     private FTPClient client;
     private JLabel field;
 
-    public DeleteDirectory( FTPClient client, JLabel field){
+    public DeleteDirectory(FTPClient client, JLabel field){
         this.client = client;
         this.field = field;
     }

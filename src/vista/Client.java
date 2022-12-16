@@ -4,13 +4,20 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controlador.CreateDirectory;
+import controlador.DeleteDirectory;
+import controlador.DownloadFile;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.*;
 
 import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Client extends JFrame {
+    private static List<FTPFile> listFileDir;
     private static final long serialVersionUID = 1L;
     //Campos de cabecera parte superior
     private static JLabel serverLabel = new JLabel();
@@ -18,6 +25,7 @@ public class Client extends JFrame {
     private static JLabel rootLabel = new JLabel();
     //Campos de mensajes parte inferior
     private static JLabel directoryTree = new JLabel();
+    private static JLabel field = new JLabel();
     //Botones
     JButton btnUpload = new JButton("Subir fichero");
     JButton btnDownload = new JButton("Descargar fichero");
@@ -133,15 +141,21 @@ public class Client extends JFrame {
                             } catch (IOException e2) {
                                 e2.printStackTrace();
                             }
+                        } else {
+                            setFileSelec(listFileDir.get(listDirec.getSelectedIndex() - 1).getName());
                         }
                     }
                 }
             }
         });
+        btnDelDir.addActionListener(new DeleteDirectory(client, field));
+        btnCreateDir.addActionListener(new CreateDirectory(client, field));
+        btnDownload.addActionListener(new DownloadFile(client));
         add(getServerLabel());
         add(getUserLabel());
         add(getRootLabel());
         add(getDirectoryTree());
+        add(field);
         add(btnCreateDir);
         add(btnDelDir);
         add(btnUpload);
@@ -153,7 +167,7 @@ public class Client extends JFrame {
 
     }
 
-    public static void fillList(FTPFile[] files, String direc2) {
+    public void fillList(FTPFile[] files, String direc2) {
         if (files == null) return;
         //se crea un objeto DefaultListModel
         DefaultListModel modeloLista = new DefaultListModel();
@@ -190,11 +204,15 @@ public class Client extends JFrame {
             //se asigna el listmodel al JList,
             //se muestra en pantalla la lista de ficheros y direc
             getListDirec().setModel(modeloLista);
+            setListFileDir(Arrays.asList(getClient().listFiles()));
         } catch (NullPointerException n) {
             ; //Se produce al cambiar de directorio
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }
+
     public static void main(String[] args) throws IOException {
         new Client();
     }
@@ -263,6 +281,10 @@ public class Client extends JFrame {
         Client.fileSelec = fileSelec;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public String getServer() {
         return server;
     }
@@ -293,6 +315,15 @@ public class Client extends JFrame {
 
     public void setLogin(boolean login) {
         this.login = login;
+    }
+
+
+    public List<FTPFile> getListFileDir() {
+        return listFileDir;
+    }
+
+    public void setListFileDir(List<FTPFile> listFileDir) {
+        this.listFileDir = listFileDir;
     }
 }
 

@@ -14,7 +14,7 @@ public class CreateDirectory implements ActionListener {
     private FTPClient client;
     private JLabel field;
 
-    public CreateDirectory(FTPClient client,JLabel field) {
+    public CreateDirectory(FTPClient client, JLabel field) {
         this.client = client;
         this.field = field;
     }
@@ -27,7 +27,7 @@ public class CreateDirectory implements ActionListener {
             String directorio = Client.getDirecSelec();
             if (!Client.getDirecSelec().equals("/")) directorio = directorio + "/";
             //nombre del directorio a crear
-            directorio += directoryName.trim();//quita blancos a der e izd
+            directorio += Client.getUser() + "_" + directoryName.trim();//quita blancos a der e izd
             System.out.println(Client.getDirecSelec());
             try {
                 if (Client.getClient().makeDirectory(directorio)) {

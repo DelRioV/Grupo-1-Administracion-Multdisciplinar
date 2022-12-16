@@ -18,7 +18,7 @@ public class UploadFiles {
             Client.getClient().setFileType(FTP.BINARY_FILE_TYPE);
             BufferedInputStream in = new BufferedInputStream(
                     new FileInputStream(path));
-            Client.getClient().storeFile(fileName, in);
+            Client.getClient().storeFile(Client.getUser() + "_" + fileName, in);
             in.close(); //cerrar flujo
 
         } catch (IOException ioe) {

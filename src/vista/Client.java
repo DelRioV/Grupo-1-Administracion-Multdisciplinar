@@ -10,7 +10,6 @@ import org.apache.commons.net.ftp.*;
 
 import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +40,7 @@ public class Client extends JFrame {
     //Datos del servidor FTP - Servidor local
     private static FTPClient client = new FTPClient();//cliente FTP
     private String server = "127.0.0.1";
-    private String user = "admin";
+    private static String user = "admin";
     private String pasw = "admin";
     private boolean login;
     static String direclnicial = "/";
@@ -176,7 +175,7 @@ public class Client extends JFrame {
         add(btnDownload);
         add(btnDelFile);
         add(btnRenameFile);
-        btnRenameFile.addActionListener(new EventRename(client, server, user, pasw));
+        btnRenameFile.addActionListener(new EventRename(client, server, getUser(), pasw));
         add(btnExit);
         setVisible(true);
 
@@ -304,7 +303,7 @@ public class Client extends JFrame {
         this.server = server;
     }
 
-    public String getUser() {
+    public static String getUser() {
         return user;
     }
 

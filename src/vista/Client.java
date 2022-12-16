@@ -145,7 +145,11 @@ public class Client extends JFrame {
                         } catch (Exception ex){
 
                         }
-                        setFileSelec(listFileDir.get(listDirec.getSelectedIndex() - 1).getName());
+                        try {
+                            setFileSelec(listFileDir.get(listDirec.getSelectedIndex() - 1).getName());
+                        } catch (Exception ex){
+
+                        }
                     }
                 }
             }
@@ -165,7 +169,7 @@ public class Client extends JFrame {
         add(btnDownload);
         add(btnDelFile);
         add(btnRenameFile);
-        btnRenameFile.addActionListener(new EventRename(client, server, user, pasw, fileSelec, direcSelec));
+        btnRenameFile.addActionListener(new EventRename(client, server, user, pasw));
         add(btnExit);
         setVisible(true);
 

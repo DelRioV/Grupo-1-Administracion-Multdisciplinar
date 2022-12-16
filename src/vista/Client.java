@@ -159,7 +159,7 @@ public class Client extends JFrame {
         btnCreateDir.addActionListener(new CreateDirectory(getClient(), getField()));
         btnDelDir.addActionListener(new DeleteDirectory(getClient(), getField()));
         btnDownload.addActionListener(new DownloadFile(getClient()));
-        btnUpload.addActionListener(new UploadFiles(user, pasw, client));
+        //btnUpload.addActionListener(new UploadFiles(user, pasw, client));
         add(serverLabel);
         add(userLabel);
         add(rootLabel);

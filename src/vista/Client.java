@@ -121,6 +121,7 @@ public class Client extends JFrame {
                     } //No se hace clic en el primer elemento del JList
                     //Puede ser un fichero o un directorio
                     else {
+                        try{
                         if (fic.substring(0, 6).equals("(DIR) ")) {
                             //SE TRATA DE UN DIRECTORIO
                             try {
@@ -142,9 +143,12 @@ public class Client extends JFrame {
                             } catch (IOException e2) {
                                 e2.printStackTrace();
                             }
-                        } else {
-                            setFileSelec(listFileDir.get(listDirec.getSelectedIndex() - 1).getName());
                         }
+
+                        } catch (Exception ex){
+
+                        }
+                        setFileSelec(listFileDir.get(listDirec.getSelectedIndex() - 1).getName());
                     }
                 }
             }

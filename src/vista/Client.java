@@ -41,8 +41,8 @@ public class Client extends JFrame {
     //Datos del servidor FTP - Servidor local
     private static FTPClient client = new FTPClient();//cliente FTP
     private String server = "127.0.0.1";
-    private String user = "pablo";
-    private String pasw = "1234";
+    private String user = "admin";
+    private String pasw = "admin";
     private boolean login;
     static String direclnicial = "/";
     //para saber el directorio y fichero seleccionado
@@ -158,6 +158,7 @@ public class Client extends JFrame {
         btnCreateDir.addActionListener(new CreateDirectory(client, field));
         btnDownload.addActionListener(new DownloadFile(client));
         btnUpload.addActionListener(new UploadEvent());
+        btnDelFile.addActionListener(new DeleteFiles());
         add(getServerLabel());
         add(getUserLabel());
         add(getRootLabel());
@@ -326,7 +327,7 @@ public class Client extends JFrame {
     }
 
 
-    public List<FTPFile> getListFileDir() {
+    public static List<FTPFile> getListFileDir() {
         return listFileDir;
     }
 

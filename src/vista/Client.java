@@ -62,7 +62,7 @@ public class Client extends JFrame {
         FTPFile[] files = getClient().listFiles();
         //Construyendo la lista de ficheros y directorios
         //del directorio de trabajo actual
-        fillList(files, direclnicial);
+        fillList(files);
         //preparar campos de pantalla
         getDirectoryTree().setText("« ARBOL DE DIRECTORIOS CONSTRUIDO »");
         getServerLabel().setText("Servidor FTP: " + getServer());
@@ -89,8 +89,12 @@ public class Client extends JFrame {
         getListDirec().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                try {
+                    setListFileDir(Arrays.asList(getClient().listFiles(getDirecSelec())));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 if (e.getValueIsAdjusting()) {
-                    setFileSelec("");
                     //elemento que se ha seleccionado de la lista
                     String fic = getListDirec().getSelectedValue().toString();
 
@@ -110,7 +114,7 @@ public class Client extends JFrame {
                                 ff2 = getClient().listFiles();
                                 getDirectoryTree().setText("");
                                 //se llena la lista con fich. del directorio padre
-                                fillList(ff2, getDirecSelec());
+                                fillList(ff2);
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
@@ -118,39 +122,41 @@ public class Client extends JFrame {
                     } //No se hace clic en el primer elemento del JList
                     //Puede ser un fichero o un directorio
                     else {
-                        try{
-                        if (fic.substring(0, 6).equals("(DIR) ")) {
-                            //SE TRATA DE UN DIRECTORIO
-                            try {
-                                fic = fic.substring(6);
-                                String direcSelec2 = "";
-                                if (getDirecSelec().equals("/"))
-                                    direcSelec2 = getDirecSelec() + fic;
-                                else
-                                    direcSelec2 = getDirecSelec() + "/" + fic;
-                                FTPFile[] ff2 = null;
-                                getClient().changeWorkingDirectory(direcSelec2);
-                                ff2 = getClient().listFiles();
-                                getDirectoryTree().setText("DIRECTORIO: " + fic + ", "
-                                        + ff2.length + " elementos");
-                                //directorio actual
-                                setDirecSelec(direcSelec2);
-                                //se llena la lista con datos del directorio
-                                fillList(ff2, getDirecSelec());
-                            } catch (IOException e2) {
-                                e2.printStackTrace();
-                            }
-                        }
-
-                        } catch (Exception ex){
-
-                        }
                         try {
-                            setFileSelec(listFileDir.get(listDirec.getSelectedIndex() - 1).getName());
-                        } catch (Exception ex){
+                            if (fic.substring(0, 6).equals("(DIR) ")) {
+                                //SE TRATA DE UN DIRECTORIO
+                                try {
+                                    fic = fic.substring(6);
+                                    String direcSelec2 = "";
+                                    if (getDirecSelec().equals("/"))
+                                        direcSelec2 = getDirecSelec() + fic;
+                                    else
+                                        direcSelec2 = getDirecSelec() + "/" + fic;
+                                    FTPFile[] ff2 = null;
+                                    getClient().changeWorkingDirectory(direcSelec2);
+                                    ff2 = getClient().listFiles();
+                                    getDirectoryTree().setText("DIRECTORIO: " + fic + ", "
+                                            + ff2.length + " elementos");
+                                    //directorio actual
+                                    setDirecSelec(direcSelec2);
+                                    //se llena la lista con datos del directorio
+                                    fillList(ff2);
+                                } catch (IOException e2) {
+                                }
+                            }
+
+                        } catch (Exception ex) {
 
                         }
+
                     }
+                }
+                try {
+                    setFileSelec(getListFileDir().get(getListDirec().getSelectedIndex() - 1).getName());
+                    System.out.println(getListFileDir());
+                    System.out.println(getDirecSelec());
+                    System.out.println(getFileSelec());
+                } catch (Exception ex) {
                 }
             }
         });
@@ -176,7 +182,7 @@ public class Client extends JFrame {
 
     }
 
-    public void fillList(FTPFile[] files, String direc2) {
+    public void fillList(FTPFile[] files) {
         if (files == null) return;
         //se crea un objeto DefaultListModel
         DefaultListModel modeloLista = new DefaultListModel();
@@ -189,13 +195,12 @@ public class Client extends JFrame {
         getListDirec().removeAll();
         try {
             //se establece el directorio de trabajo actual
-            getClient().changeWorkingDirectory(direc2);
+            getClient().changeWorkingDirectory(getDirecSelec());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setDirecSelec(direc2); //directorio actual
         //se añade el directorio de trabajo al listmodel, primer elemento
-        modeloLista.addElement(direc2);
+        modeloLista.addElement(getDirecSelec());
         //se recorre el array con los ficheros y directorios
         for (int i = 0; i < files.length; i++) {
             if (!(files[i].getName()).equals(".")
@@ -213,11 +218,8 @@ public class Client extends JFrame {
             //se asigna el listmodel al JList,
             //se muestra en pantalla la lista de ficheros y direc
             getListDirec().setModel(modeloLista);
-            setListFileDir(Arrays.asList(getClient().listFiles()));
         } catch (NullPointerException n) {
             ; //Se produce al cambiar de directorio
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
 
     }
@@ -331,8 +333,8 @@ public class Client extends JFrame {
         return listFileDir;
     }
 
-    public void setListFileDir(List<FTPFile> listFileDir) {
-        this.listFileDir = listFileDir;
+    public static void setListFileDir(List<FTPFile> listFileDir) {
+        Client.listFileDir = listFileDir;
     }
 }
 

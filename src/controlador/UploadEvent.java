@@ -21,7 +21,7 @@ public class UploadEvent implements ActionListener {
         else{
             try{
                 File f = uploadFilesAuxWindow.getF().getSelectedFile();
-                new UploadFiles().upload("admin","admin",f.getAbsolutePath(),uploadFilesAuxWindow.getTextFields().get(1).getText());
+                new UploadFiles().upload(f.getAbsolutePath(),uploadFilesAuxWindow.getTextFields().get(1).getText());
                 uploadFilesAuxWindow.dispose();
                 JOptionPane.showConfirmDialog(null,"Fichero subido correctamente");
             }catch (Exception er){

@@ -2,6 +2,7 @@ package controlador;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import vista.Client;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -11,22 +12,15 @@ public class UploadFiles {
 
     private String servidor = "127.0.0.1"; //servidor
 
-    public void upload(String user,String pasw,String path,String fileName){
-        FTPClient cliente = new FTPClient();
+    public void upload(String path, String fileName) {
         try {
-            cliente.connect(servidor);
-            boolean login = cliente.login(user, pasw);
-            String direc = "/NUEVODIREC";
-            if (login) {
-                cliente.changeWorkingDirectory(direc);
-                cliente.setFileType(FTP.BINARY_FILE_TYPE);
-                BufferedInputStream in = new BufferedInputStream(
-                        new FileInputStream(path));
-                cliente.storeFile(fileName, in);
-                in.close(); //cerrar flujo
-                cliente.logout(); //logout del usuario
-                cliente.disconnect(); //desconexión del servidor
-            }
+            Client.getClient().changeWorkingDirectory(Client.getDirecSelec());
+            Client.getClient().setFileType(FTP.BINARY_FILE_TYPE);
+            BufferedInputStream in = new BufferedInputStream(
+                    new FileInputStream(path));
+            Client.getClient().storeFile(fileName, in);
+            in.close(); //cerrar flujo
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

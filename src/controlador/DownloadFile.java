@@ -2,30 +2,39 @@ package controlador;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import vista.Client;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 
-public class DownloadFile {
+public class DownloadFile implements ActionListener {
+    private FTPClient client;
+
+    public DownloadFile(FTPClient client) {
+        this.client = client;
+    }
+
     //para saber el directorio y fichero seleccionado
     private String selectedFile = "", initialFolder = "/", selectedFolder = initialFolder;
 
-    public DownloadFile(FTPClient client, String selectedFolder, String selectedFile) { // Parametros: Cliente FTP, la carpeta SIN el archivo, y el archivo
+    public void dlFile() { // Parametros: Cliente FTP, la carpeta SIN el archivo, y el archivo
         if (selectedFolder != null)
-            this.selectedFolder = selectedFolder;
+            this.selectedFolder = Client.getDirecSelec();
         if (selectedFile != null)
-            this.selectedFile = selectedFile;
+            this.selectedFile = Client.getFileSelec();
 
         String directorio = this.selectedFolder;
         if (!this.selectedFolder.equals("/"))
             directorio = directorio + "/";
         if (!this.selectedFile.equals(""))
-            downloadFile(directorio + this.selectedFile, this.selectedFile, client);
+            downloadFile(directorio + Client.getFileSelec(),Client.getFileSelec());
         else
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun archivo");
     }
 
-    private void downloadFile(String NombreCompleto, String nombreFichero, FTPClient client) {
+    private void downloadFile(String NombreCompleto, String nombreFichero) {
         File file;
         String fullRute = "";
         String folder = "";
@@ -55,5 +64,10 @@ public class DownloadFile {
             }
         }
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        dlFile();
     }
 }

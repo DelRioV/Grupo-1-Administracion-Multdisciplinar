@@ -6,19 +6,11 @@ import vista.Client;
 import java.io.IOException;
 
 public class RenameFiles {
-
     private FTPClient client;
-    private String server;
-    private String user;
-    private String pasw;
     private String newName;
 
-    public RenameFiles(FTPClient client, String server, String user, String pasw, String newName) {
+    public RenameFiles(FTPClient client, String newName) {
         this.client = client;
-        this.server = server;
-        this.user = user;
-        this.pasw = pasw;
-
         this.newName = newName;
     }
 

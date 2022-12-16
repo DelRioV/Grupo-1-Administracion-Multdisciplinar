@@ -7,6 +7,7 @@ import javax.swing.event.ListSelectionListener;
 import controlador.CreateDirectory;
 import controlador.DeleteDirectory;
 import controlador.DownloadFile;
+import controlador.UploadEvent;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.*;
 
@@ -151,6 +152,7 @@ public class Client extends JFrame {
         btnDelDir.addActionListener(new DeleteDirectory(client, field));
         btnCreateDir.addActionListener(new CreateDirectory(client, field));
         btnDownload.addActionListener(new DownloadFile(client));
+        btnUpload.addActionListener(new UploadEvent());
         add(getServerLabel());
         add(getUserLabel());
         add(getRootLabel());

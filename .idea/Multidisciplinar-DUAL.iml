@@ -11,6 +11,7 @@
       <library>
         <CLASSES>
           <root url="jar://C:/conector/commons-net-3.9.0.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/Herramientas/FileZilla Connector/commons-net-3.9.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

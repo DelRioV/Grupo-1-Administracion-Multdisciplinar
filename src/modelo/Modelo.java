@@ -21,59 +21,94 @@ public class Modelo {
     private final static String[] SENDMAILWINDOWLABELTXT = {"Correo", "Asunto", "Mensaje"};
     private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
 
-    public final static int INBOXWINDOWNUMBUTTONS = 1, INBOXWINDOWNUMPANELS = 1, INBOXWINDOWNUMTEXTFIELDS = 2, INBOXWINDOWNUMJTABLE = 1;
-    public final static String INBOXWINDOWNAME = "Buzón de correo";
-    public final static String[] INBOXWINDOWTABLEHEADERS = {"Usario", "Mensaje"}, INBOXWINDOWBTNSTXT = {"Volver"};
+    private final static int INBOXWINDOWNUMBUTTONS = 1, INBOXWINDOWNUMPANELS = 1, INBOXWINDOWNUMJTABLE = 1;
+    private final static String INBOXWINDOWNAME = "Buzón de correo";
+    private final static String[] INBOXWINDOWTABLEHEADERS = new String[]{"Usario", "Mensaje"}, INBOXWINDOWBTNSTXT = {"Volver"};
 
-    public int getLengthtextfields(){
+    private static String[] INBOXLBLTEXT = new String[]{"prueba@gmail.com"};
+
+    public int getLengthtextfields() {
         return LENGTHTEXTFIELDS;
     }
-    public String getLoginwindowname(){
+
+    public String getLoginwindowname() {
         return LOGINWINDOWNAME;
     }
-    public int getLoginwindownumbotones(){
+
+    public int getLoginwindownumbotones() {
         return LOGINWINDOWNUMBOTONES;
     }
-    public int getLoginwindownumpanels(){
+
+    public int getLoginwindownumpanels() {
         return LOGINWINDOWNUMPANELS;
     }
-    public int getLoginwindownumtextfields(){
+
+    public int getLoginwindownumtextfields() {
         return LOGINWINDOWNUMTEXTFIELDS;
     }
-    public int getLoginwindownumlabels(){
+
+    public int getLoginwindownumlabels() {
         return LOGINWINDOWNUMLABELS;
     }
-    public String [] getLoginwindowlabelsnames(){
+
+    public String[] getLoginwindowlabelsnames() {
         return LOGINWINDOWLABELSNAMES;
     }
-    public String getLoginwindowbuttonsame(){
-     return LOGINWINDOWBUTTONSAME;
+
+    public String getLoginwindowbuttonsame() {
+        return LOGINWINDOWBUTTONSAME;
     }
 
     public static String getSENDMAILWINDOWNAME() {
         return SENDMAILWINDOWNAME;
     }
+
     public static int getSENDMAILWINDOWNUMBTNS() {
         return SENDMAILWINDOWNUMBTNS;
     }
+
     public static int getSENDMAILWINDOWTNUMEXTFIELDS() {
         return SENDMAILWINDOWTNUMEXTFIELDS;
     }
-    public static int getSENDMAILWINDOWNUMTEXTAREA() { return SENDMAILWINDOWNUMTEXTAREA; }
-    public static int getSENDMAILWINDOWNUMLABELS() { return SENDMAILWINDOWNUMLABELS; }
+
+    public static int getSENDMAILWINDOWNUMTEXTAREA() {
+        return SENDMAILWINDOWNUMTEXTAREA;
+    }
+
+    public static int getSENDMAILWINDOWNUMLABELS() {
+        return SENDMAILWINDOWNUMLABELS;
+    }
+
     public static int getSENDMAILWINDOWNUMPANELS() {
         return SENDMAILWINDOWNUMPANELS;
     }
-    public static String[] getSENDMAILWINDOWLABELTXT() { return SENDMAILWINDOWLABELTXT; }
+
+    public static String[] getSENDMAILWINDOWLABELTXT() {
+        return SENDMAILWINDOWLABELTXT;
+    }
+
     public static String[] getSENDMAILWINDOWBTNSTXT() {
         return SENDMAILWINDOWBTNSTXT;
     }
 
 
-    public String getINBOXWINDOWNAME(){ return INBOXWINDOWNAME; }
-    public int getINBOXWINDOWBTNSTXT(){ return INBOXWINDOWNUMBUTTONS; }
-    public int getINBOXWINDOWNUMPANELS(){ return INBOXWINDOWNUMPANELS; }
-    public int getINBOXWINDOWNUMTEXTFIELDS(){ return INBOXWINDOWNUMTEXTFIELDS; }
-    public int getINBOXWINDOWNUMJTABLE(){ return INBOXWINDOWNUMJTABLE; }
+    public String getINBOXWINDOWNAME() { return INBOXWINDOWNAME; }
 
+    public int getINBOXWINDOWNUMBUTTONS() { return INBOXWINDOWNUMBUTTONS; }
+
+    public int getINBOXWINDOWNUMPANELS() { return INBOXWINDOWNUMPANELS; }
+
+    public int getINBOXWINDOWNUMJTABLE() { return INBOXWINDOWNUMJTABLE; }
+
+    public String[] getINBOXWINDOWTABLEHEADERS() { return INBOXWINDOWTABLEHEADERS; }
+
+    public String[] getINBOXWINDOWBTNSTXT(){ return INBOXWINDOWBTNSTXT; };
+
+    public static String[] getINBOXLBLTEXT() {
+        return INBOXLBLTEXT;
+    }
+
+    public static void setINBOXLBLTEXT(String[] INBOXLBLTEXT) {
+        Modelo.INBOXLBLTEXT = INBOXLBLTEXT;
+    }
 }

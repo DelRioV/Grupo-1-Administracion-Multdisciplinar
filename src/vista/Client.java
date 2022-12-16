@@ -13,8 +13,14 @@ import org.apache.commons.net.ftp.*;
 
 import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Client extends JFrame {
+
+    private static List<FTPFile> dirFileNameOnView = new ArrayList<FTPFile>();
+
     private static final long serialVersionUID = 1L;
     //Campos de cabecera parte superior
     static JLabel serverLabel = new JLabel();
@@ -84,7 +90,7 @@ public class Client extends JFrame {
         //se añaden el resto de los campos de pantalla
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(510, 600);
-        //ACCIONES AL PULSAR en la lista o en los botones
+        //ACCIONES AL PULSAR en la lista
         getListDirec().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -137,6 +143,11 @@ public class Client extends JFrame {
                                 fillList(ff2, getDirecSelec());
                             } catch (IOException e2) {
                                 e2.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                setFileSelec(dirFileNameOnView.get(listDirec.getSelectedIndex() - 1).getName());
+                            } catch (Exception ex) {
                             }
                         }
                     }
@@ -201,8 +212,12 @@ public class Client extends JFrame {
             //se asigna el listmodel al JList,
             //se muestra en pantalla la lista de ficheros y direc
             getListDirec().setModel(modeloLista);
+            dirFileNameOnView = Arrays.asList(getClient().listFiles());
+
         } catch (NullPointerException n) {
             ; //Se produce al cambiar de directorio
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }

@@ -35,6 +35,7 @@ public class DownloadFile implements ActionListener {
     }
 
     private void downloadFile(String NombreCompleto, String nombreFichero) {
+        System.out.println(nombreFichero);
         File file;
         String fullRute = "";
         String folder = "";
@@ -48,6 +49,7 @@ public class DownloadFile implements ActionListener {
 
             folder = (file.getAbsolutePath()).toString(); //Carpeta donde se guardara el archivo
             fullRute = folder + File.separator + nombreFichero;  // Ruta completa
+            System.out.println(fullRute);
             try {
                 client.setFileType(FTP.BINARY_FILE_TYPE);
                 BufferedOutputStream out = new BufferedOutputStream(

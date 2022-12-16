@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controlador.EventRename;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.*;
 
@@ -148,6 +149,7 @@ public class Client extends JFrame {
         add(btnDownload);
         add(btnDelFile);
         add(btnRenameFile);
+        btnRenameFile.addActionListener(new EventRename(client, server, user, pasw, ficheroSelec, direcSelec));
         add(btnExit);
         setVisible(true);
 

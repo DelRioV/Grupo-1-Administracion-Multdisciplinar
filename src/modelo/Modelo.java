@@ -21,6 +21,10 @@ public class Modelo {
     private final static String[] SENDMAILWINDOWLABELTXT = {"Correo", "Asunto", "Mensaje"};
     private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
 
+    public final static int INBOXWINDOWNUMBUTTONS = 1, INBOXWINDOWNUMPANELS = 1, INBOXWINDOWNUMTEXTFIELDS = 2, INBOXWINDOWNUMJTABLE = 1;
+    public final static String INBOXWINDOWNAME = "Buzón de correo";
+    public final static String[] INBOXWINDOWTABLEHEADERS = {"Usario", "Mensaje"}, INBOXWINDOWBTNSTXT = {"Volver"};
+
     public int getLengthtextfields(){
         return LENGTHTEXTFIELDS;
     }
@@ -55,19 +59,21 @@ public class Modelo {
     public static int getSENDMAILWINDOWTNUMEXTFIELDS() {
         return SENDMAILWINDOWTNUMEXTFIELDS;
     }
-    public static int getSENDMAILWINDOWNUMTEXTAREA() {
-        return SENDMAILWINDOWNUMTEXTAREA;
-    }
-    public static int getSENDMAILWINDOWNUMLABELS() {
-        return SENDMAILWINDOWNUMLABELS;
-    }
+    public static int getSENDMAILWINDOWNUMTEXTAREA() { return SENDMAILWINDOWNUMTEXTAREA; }
+    public static int getSENDMAILWINDOWNUMLABELS() { return SENDMAILWINDOWNUMLABELS; }
     public static int getSENDMAILWINDOWNUMPANELS() {
         return SENDMAILWINDOWNUMPANELS;
     }
-    public static String[] getSENDMAILWINDOWLABELTXT() {
-        return SENDMAILWINDOWLABELTXT;
-    }
+    public static String[] getSENDMAILWINDOWLABELTXT() { return SENDMAILWINDOWLABELTXT; }
     public static String[] getSENDMAILWINDOWBTNSTXT() {
         return SENDMAILWINDOWBTNSTXT;
     }
+
+
+    public String getINBOXWINDOWNAME(){ return INBOXWINDOWNAME; }
+    public int getINBOXWINDOWBTNSTXT(){ return INBOXWINDOWNUMBUTTONS; }
+    public int getINBOXWINDOWNUMPANELS(){ return INBOXWINDOWNUMPANELS; }
+    public int getINBOXWINDOWNUMTEXTFIELDS(){ return INBOXWINDOWNUMTEXTFIELDS; }
+    public int getINBOXWINDOWNUMJTABLE(){ return INBOXWINDOWNUMJTABLE; }
+
 }

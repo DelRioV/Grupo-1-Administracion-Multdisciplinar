@@ -27,6 +27,7 @@ public class LoginWindowManager {
         loginWindow.getPanels().get(0).add(loginWindow.getLabels().get(1));
         loginWindow.getPanels().get(0).add(loginWindow.getTextFields().get(1));
         loginWindow.getPanels().get(0).add(loginWindow.getButtons().get(0));
+        loginWindow.getButtons().get(0).addActionListener(new LoginEvent(loginWindow));
     }
 
 }

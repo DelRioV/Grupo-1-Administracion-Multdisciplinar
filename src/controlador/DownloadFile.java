@@ -29,7 +29,7 @@ public class DownloadFile implements ActionListener {
         if (!this.selectedFolder.equals("/"))
             directorio = directorio + "/";
         if (!this.selectedFile.equals(""))
-            downloadFile(directorio + Client.getFileSelec(),Client.getFileSelec());
+            downloadFile(directorio + Client.getFileSelec(), Client.getFileSelec());
         else
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun archivo");
     }
@@ -70,11 +70,13 @@ public class DownloadFile implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dlFile();
-        try {
-            Client.fillList(Client.getClient().listFiles());
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+        if (Client.getFileSelec().contains(Client.getUser())) {
+            dlFile();
+            try {
+                Client.fillList(Client.getClient().listFiles());
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }

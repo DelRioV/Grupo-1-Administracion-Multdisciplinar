@@ -122,6 +122,7 @@ public class Client extends JFrame {
                     //Puede ser un fichero o un directorio
                     else {
                         try {
+
                             if (fic.substring(0, 6).equals("(DIR) ")) {
                                 //SE TRATA DE UN DIRECTORIO
                                 try {
@@ -132,14 +133,16 @@ public class Client extends JFrame {
                                     else
                                         direcSelec2 = getDirecSelec() + "/" + fic;
                                     FTPFile[] ff2 = null;
-                                    getClient().changeWorkingDirectory(direcSelec2);
-                                    ff2 = getClient().listFiles();
-                                    getDirectoryTree().setText("DIRECTORIO: " + fic + ", "
-                                            + ff2.length + " elementos");
-                                    //directorio actual
-                                    setDirecSelec(direcSelec2);
-                                    //se llena la lista con datos del directorio
-                                    fillList(ff2);
+                                    if(direcSelec2.contains(getUser())) {
+                                        getClient().changeWorkingDirectory(direcSelec2);
+                                        ff2 = getClient().listFiles();
+                                        getDirectoryTree().setText("DIRECTORIO: " + fic + ", "
+                                                + ff2.length + " elementos");
+                                        //directorio actual
+                                        setDirecSelec(direcSelec2);
+                                        //se llena la lista con datos del directorio
+                                        fillList(ff2);
+                                    }
                                 } catch (IOException e2) {
                                 }
                             }

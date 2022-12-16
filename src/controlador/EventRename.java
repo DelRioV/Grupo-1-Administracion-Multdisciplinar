@@ -25,7 +25,7 @@ public class EventRename implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!Client.getFileSelec().equals("")) {
+        if (!Client.getFileSelec().equals("") && Client.getFileSelec().contains(Client.getUser())) {
             String newFileName = JOptionPane.showInputDialog("Nuevo nombre del fichero");
             new RenameFiles(client, Client.getUser() + "_" + newFileName).renameFile();
         } else {

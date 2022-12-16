@@ -13,6 +13,7 @@ public class UploadFilesAuxWindow extends JFrame implements Windows{
     private ArrayList<JTextField> textFields = new ArrayList<>();
     private ArrayList<JLabel> labels = new ArrayList<>();
 
+    private JFileChooser f = null;
 
     public UploadFilesAuxWindow(String name){
         super(name);
@@ -60,8 +61,10 @@ public class UploadFilesAuxWindow extends JFrame implements Windows{
 
     @Override
     public void setDifferentProperties() {
-        this.setSize(300,200);
+        this.setSize(800,800);
         this.setLayout(new FlowLayout());
+
+        panels.get(0).add(f);
         this.add(panels.get(0));
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -98,5 +101,17 @@ public class UploadFilesAuxWindow extends JFrame implements Windows{
 
     public void setTextFields(ArrayList<JTextField> textFields) {
         this.textFields = textFields;
+    }
+
+    public void createJFileChooser(){
+        f = new JFileChooser();
+        f.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //solo se pueden seleccionar directorios
+    }
+    public JFileChooser getF() {
+        return f;
+    }
+
+    public void setF(JFileChooser f) {
+        this.f = f;
     }
 }

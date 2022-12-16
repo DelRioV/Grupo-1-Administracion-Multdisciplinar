@@ -21,6 +21,10 @@ public class Modelo {
     private final static String[] SENDMAILWINDOWLABELTXT = {"Correo", "Asunto", "Mensaje"};
     private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
 
+    private final static String[] UPLOADWINDOSLABELS = {"Ruta de tu ordenador","Nombre del fichero"};
+
+    private final static String UPLOADWINDOWBUTTONNAME = "Subir archivo";
+
     public int getLengthtextfields(){
         return LENGTHTEXTFIELDS;
     }
@@ -70,4 +74,11 @@ public class Modelo {
     public static String[] getSENDMAILWINDOWBTNSTXT() {
         return SENDMAILWINDOWBTNSTXT;
     }
+    public String [] getUploadwindoslabels(){
+        return UPLOADWINDOSLABELS;
+    }
+    public String getUploadwindowbuttonname(){
+        return UPLOADWINDOWBUTTONNAME;
+    }
+
 }

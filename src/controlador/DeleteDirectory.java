@@ -49,5 +49,10 @@ public class DeleteDirectory implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         delDir();
+        try {
+            Client.fillList(Client.getClient().listFiles());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

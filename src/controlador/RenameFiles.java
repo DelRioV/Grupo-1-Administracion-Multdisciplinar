@@ -18,6 +18,7 @@ public class RenameFiles {
         try {
             client.changeWorkingDirectory(Client.getDirecSelec());
             client.rename(Client.getFileSelec(), newName);
+            Client.fillList(Client.getClient().listFiles());
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

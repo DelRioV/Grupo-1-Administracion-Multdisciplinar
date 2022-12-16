@@ -182,7 +182,7 @@ public class Client extends JFrame {
 
     }
 
-    public void fillList(FTPFile[] files) {
+    public static void fillList(FTPFile[] files) {
         if (files == null) return;
         //se crea un objeto DefaultListModel
         DefaultListModel modeloLista = new DefaultListModel();
@@ -336,5 +336,6 @@ public class Client extends JFrame {
     public static void setListFileDir(List<FTPFile> listFileDir) {
         Client.listFileDir = listFileDir;
     }
+
 }
 

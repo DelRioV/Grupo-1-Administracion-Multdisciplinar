@@ -1,12 +1,14 @@
 package controlador;
 
 import modelo.Modelo;
+import vista.Client;
 import vista.UploadFilesAuxWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 public class UploadEvent implements ActionListener {
 
@@ -23,12 +25,17 @@ public class UploadEvent implements ActionListener {
                 File f = uploadFilesAuxWindow.getF().getSelectedFile();
                 new UploadFiles().upload(f.getAbsolutePath(),uploadFilesAuxWindow.getTextFields().get(1).getText());
                 uploadFilesAuxWindow.dispose();
-                JOptionPane.showConfirmDialog(null,"Fichero subido correctamente");
+                JOptionPane.showMessageDialog(null,"Fichero subido correctamente");
             }catch (Exception er){
                 uploadFilesAuxWindow.dispose();
-                JOptionPane.showConfirmDialog(null,"Los parámetros introducidos son incorrectos");
+                JOptionPane.showMessageDialog(null,"Los parámetros introducidos son incorrectos");
             }
 
+        }
+        try {
+            Client.fillList(Client.getClient().listFiles());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 

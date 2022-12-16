@@ -71,5 +71,10 @@ public class DownloadFile implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         dlFile();
+        try {
+            Client.fillList(Client.getClient().listFiles());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

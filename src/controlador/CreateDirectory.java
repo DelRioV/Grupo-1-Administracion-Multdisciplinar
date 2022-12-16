@@ -50,5 +50,10 @@ public class CreateDirectory implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         creaDir();
+        try {
+            Client.fillList(Client.getClient().listFiles());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

@@ -29,5 +29,10 @@ public class DeleteFiles implements ActionListener {
         catch (IOException ex) {
             JOptionPane.showMessageDialog(null,"No se ha podido borrar el archivo");
         }
+        try {
+            Client.fillList(Client.getClient().listFiles());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

@@ -133,7 +133,7 @@ public class Client extends JFrame {
                                     else
                                         direcSelec2 = getDirecSelec() + "/" + fic;
                                     FTPFile[] ff2 = null;
-                                    if(direcSelec2.contains(getUser())) {
+                                    if (direcSelec2.contains(getUser()) || Client.getUser().equals("admin")) {
                                         getClient().changeWorkingDirectory(direcSelec2);
                                         ff2 = getClient().listFiles();
                                         getDirectoryTree().setText("DIRECTORIO: " + fic + ", "

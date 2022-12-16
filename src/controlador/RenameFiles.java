@@ -15,12 +15,14 @@ public class RenameFiles {
     }
 
     public void renameFile() {
-        try {
-            client.changeWorkingDirectory(Client.getDirecSelec());
-            client.rename(Client.getFileSelec(), newName);
-            Client.fillList(Client.getClient().listFiles());
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        if (Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
+            try {
+                client.changeWorkingDirectory(Client.getDirecSelec());
+                client.rename(Client.getFileSelec(), newName);
+                Client.fillList(Client.getClient().listFiles());
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
         }
     }
 }

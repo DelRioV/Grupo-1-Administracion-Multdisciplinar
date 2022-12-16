@@ -16,7 +16,7 @@ public class DeleteFiles implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (Client.getFileSelec().contains(Client.getUser())) {
+        if (Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
             deleteFiles();
             try {
                 Client.fillList(Client.getClient().listFiles());

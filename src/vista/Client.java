@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controlador.UploadEvent;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.*;
 
@@ -149,6 +150,7 @@ public class Client extends JFrame {
         add(btnDelFile);
         add(btnRenameFile);
         add(btnExit);
+        btnUpload.addActionListener(new UploadEvent());
         setVisible(true);
 
     }

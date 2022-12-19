@@ -2,26 +2,39 @@ package controlador;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
+import vista.Client;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class CreateDirectory {
+public class CreateDirectory implements ActionListener {
 
-    public void creaDir(String direcSelec, FTPClient client, JTextField field){
-        String directoryName= JOptionPane.showInputDialog(null,
+    private FTPClient client;
+    private JLabel field;
+
+    public CreateDirectory(FTPClient client, JLabel field) {
+        this.client = client;
+        this.field = field;
+    }
+
+    public void creaDir() {
+        String directoryName = JOptionPane.showInputDialog(null,
                 "Introduce el nombre del directorio", "carpeta");
+        System.out.println(Client.getDirecSelec());
         if (!(directoryName == null)) {
-            String directorio = direcSelec;
-            if (!direcSelec.equals("/")) directorio = directorio + "/";
+            String directorio = Client.getDirecSelec();
+            if (!Client.getDirecSelec().equals("/")) directorio = directorio + "/";
             //nombre del directorio a crear
-            directorio += directoryName.trim();//quita blancos a der e izd
+            directorio += Client.getUser() + "_" + directoryName.trim();//quita blancos a der e izd
+            System.out.println(Client.getDirecSelec());
             try {
-                if (client.makeDirectory(directorio)) {
+                if (Client.getClient().makeDirectory(directorio)) {
                     String m = directoryName.trim() + " => Se ha creado correctamente ...";
                     JOptionPane.showMessageDialog(null, m);
                     field.setText(m);
-                    client.changeWorkingDirectory(direcSelec);
+                    Client.getClient().changeWorkingDirectory(Client.getDirecSelec());
                     FTPFile[] ff2 = null;
                     //obtener ficheros del directorio actual
                     ff2 = client.listFiles();
@@ -31,6 +44,16 @@ public class CreateDirectory {
             } catch (IOException el) {
                 el.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        creaDir();
+        try {
+            Client.fillList(Client.getClient().listFiles());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 }

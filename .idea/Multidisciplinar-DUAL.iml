@@ -7,14 +7,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/conector/javax.mail.jar!/" />
+          <root url="jar://C:/conector/commons-net-3.9.0.jar!/" />
+          <root url="jar://$USER_HOME$/Documents/Herramientas/FileZilla Connector/commons-net-3.9.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="commons-net-3.9.0" level="project" />
   </component>
 </module>

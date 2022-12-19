@@ -6,23 +6,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class LoginWindow extends JFrame implements Windows{
-
+public class UploadFilesAuxWindow extends JFrame implements Windows{
     private Modelo model = new Modelo();
     private ArrayList<JButton> buttons = new ArrayList<>();
     private ArrayList<JPanel> panels = new ArrayList<>();
     private ArrayList<JTextField> textFields = new ArrayList<>();
     private ArrayList<JLabel> labels = new ArrayList<>();
 
+    private JFileChooser f = null;
 
-    public LoginWindow(String name){
+    public UploadFilesAuxWindow(String name){
         super(name);
     }
 
     @Override
     public void createButtons(int numButtons) {
         for(int i = 0;i<numButtons;i++){
-            buttons.add(new JButton(model.getLoginwindowbuttonsame()));
+            buttons.add(new JButton(model.getUploadwindowbuttonname()));
         }
     }
 
@@ -45,7 +45,7 @@ public class LoginWindow extends JFrame implements Windows{
     @Override
     public void createLabels(int numLabels) {
         for(int i = 0;i<numLabels;i++){
-            labels.add(new JLabel(model.getLoginwindowlabelsnames()[i]));
+            labels.add(new JLabel(model.getUploadwindoslabels()[i]));
         }
     }
 
@@ -61,8 +61,10 @@ public class LoginWindow extends JFrame implements Windows{
 
     @Override
     public void setDifferentProperties() {
-        this.setSize(500,500);
+        this.setSize(800,800);
         this.setLayout(new FlowLayout());
+
+        panels.get(0).add(f);
         this.add(panels.get(0));
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -99,5 +101,17 @@ public class LoginWindow extends JFrame implements Windows{
 
     public void setTextFields(ArrayList<JTextField> textFields) {
         this.textFields = textFields;
+    }
+
+    public void createJFileChooser(){
+        f = new JFileChooser();
+        f.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //solo se pueden seleccionar directorios
+    }
+    public JFileChooser getF() {
+        return f;
+    }
+
+    public void setF(JFileChooser f) {
+        this.f = f;
     }
 }

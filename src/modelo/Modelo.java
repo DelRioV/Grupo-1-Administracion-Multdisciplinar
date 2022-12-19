@@ -1,5 +1,7 @@
 package modelo;
 
+import java.awt.*;
+
 public class Modelo {
 
     private final static String LOGINWINDOWNAME = "Ventana de inicio de sesión";
@@ -111,4 +113,18 @@ public class Modelo {
     public static void setINBOXLBLTEXT(String[] INBOXLBLTEXT) {
         Modelo.INBOXLBLTEXT = INBOXLBLTEXT;
     }
+
+    /**
+     * Design Inbox Email
+     */
+    public static Font fontInboxLabels = new Font("Consolas", Font.PLAIN, 22);
+    public static Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 23);
+    public static Color bgColorInboxJTable = new Color(245, 240, 198);
+    public static Color bgColorInboxPanel = new Color(223, 236, 243);
+    public static Color bgColorInboxNorthSouthBorderLayout = new Color(174, 214, 241);
+    public static Color bgColorInboxButton = new Color(223, 236, 243);
+    public static Color bgColorInboxButtonBorder = new Color(0, 162, 253);
+
+    public int windowsInboxWidth = 600;
+    public int windowsInboxHeight = 600;
 }

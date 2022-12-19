@@ -13,7 +13,7 @@ public class InboxWindowManager {
     private Modelo model = new Modelo();
 
     public InboxWindowManager() {
-        createWindow();
+        //createWindow();
     }
 
     public void createWindow() {

@@ -9,76 +9,93 @@ public class Modelo {
     private final static int LOGINWINDOWNUMPANELS = 1;
     private final static int LOGINWINDOWNUMTEXTFIELDS = 2;
     private final static int LOGINWINDOWNUMLABELS = 2;
-    private final static String [] LOGINWINDOWLABELSNAMES = {"Nombre de usuario","Contraseña"};
+    private final static String[] LOGINWINDOWLABELSNAMES = {"Nombre de usuario", "Contraseña"};
     private final static String LOGINWINDOWBUTTONSAME = "Iniciar sesión";
 
     private final static int LENGTHTEXTFIELDS = 20;
 
     private final static String SENDMAILWINDOWNAME = "Enviar correo electrónico";
     private final static int SENDMAILWINDOWNUMBTNS = 2;
-    private final static int SENDMAILWINDOWTNUMEXTFIELDS = 2;
+    private final static int SENDMAILWINDOWTNUMEXTFIELDS = 1;
     private final static int SENDMAILWINDOWNUMTEXTAREA = 1;
-    private final static int SENDMAILWINDOWNUMLABELS = 3;
-    private final static int SENDMAILWINDOWNUMPANELS = 1;
-    private final static String[] SENDMAILWINDOWLABELTXT = {"Correo", "Asunto", "Mensaje"};
+    private final static int SENDMAILWINDOWNUMLABELS = 2;
+    private final static int SENDMAILWINDOWNUMPANELS = 2;
+    private final static int SENDMAILWINDOWHEIGTH = 350;
+    private final static int SENDMAILWINDOWWIDTH = 700;
+    private final static String[] SENDMAILWINDOWLABELTXT = {"Asunto", "Mensaje"};
     private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
 
-    private final static String[] UPLOADWINDOSLABELS = {"Ruta de tu ordenador","Nombre del fichero"};
-
-    private final static String UPLOADWINDOWBUTTONNAME = "Subir archivo";
-
-
-    public int getLengthtextfields(){
+    public int getLengthtextfields() {
         return LENGTHTEXTFIELDS;
     }
-    public String getLoginwindowname(){
+
+    public String getLoginwindowname() {
         return LOGINWINDOWNAME;
     }
-    public int getLoginwindownumbotones(){
+
+    public int getLoginwindownumbotones() {
         return LOGINWINDOWNUMBOTONES;
     }
-    public int getLoginwindownumpanels(){
+
+    public int getLoginwindownumpanels() {
         return LOGINWINDOWNUMPANELS;
     }
-    public int getLoginwindownumtextfields(){
+
+    public int getLoginwindownumtextfields() {
         return LOGINWINDOWNUMTEXTFIELDS;
     }
-    public int getLoginwindownumlabels(){
+
+    public int getLoginwindownumlabels() {
         return LOGINWINDOWNUMLABELS;
     }
-    public String [] getLoginwindowlabelsnames(){
+
+    public String[] getLoginwindowlabelsnames() {
         return LOGINWINDOWLABELSNAMES;
     }
-    public String getLoginwindowbuttonsame(){
-     return LOGINWINDOWBUTTONSAME;
+
+    public String getLoginwindowbuttonsame() {
+        return LOGINWINDOWBUTTONSAME;
     }
 
     public static String getSENDMAILWINDOWNAME() {
         return SENDMAILWINDOWNAME;
     }
+
     public static int getSENDMAILWINDOWNUMBTNS() {
         return SENDMAILWINDOWNUMBTNS;
     }
+
     public static int getSENDMAILWINDOWTNUMEXTFIELDS() {
         return SENDMAILWINDOWTNUMEXTFIELDS;
     }
+
     public static int getSENDMAILWINDOWNUMTEXTAREA() {
         return SENDMAILWINDOWNUMTEXTAREA;
     }
+
     public static int getSENDMAILWINDOWNUMLABELS() {
         return SENDMAILWINDOWNUMLABELS;
     }
+
     public static int getSENDMAILWINDOWNUMPANELS() {
         return SENDMAILWINDOWNUMPANELS;
     }
+
     public static String[] getSENDMAILWINDOWLABELTXT() {
         return SENDMAILWINDOWLABELTXT;
     }
+
     public static String[] getSENDMAILWINDOWBTNSTXT() {
         return SENDMAILWINDOWBTNSTXT;
     }
 
+    public static int getSENDMAILWINDOWHEIGTH() {
+        return SENDMAILWINDOWHEIGTH;
+    }
 
+    public static int getSENDMAILWINDOWWIDTH() {
+        return SENDMAILWINDOWWIDTH;
+    }
 
 
     private static final int INBOXWINDOWNUMBUTTONS = 1,
@@ -134,15 +151,17 @@ public class Modelo {
     public static int getINBOXWINDOWJLABEL() {
         return INBOXWINDOWJLABEL;
     }
+
     public static String[] getINBOXLBLTEXT() {
         return INBOXLBLTEXT;
     }
+
     public static String[] getINBOXWINDOWTABLEHEADERS() {
         return INBOXWINDOWTABLEHEADERS;
     }
 
     private static String[] INBOXWINDOWJLABELTXT = {"prueba@prueba.com"};
-    private static int  INBOXWINDOWJLABEL = 1;
+    private static int INBOXWINDOWJLABEL = 1;
 
 
 }

@@ -24,8 +24,4 @@ public class LoginUI extends JFrame{
     public static void main(String[] args) {
         new LoginUI();
     }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

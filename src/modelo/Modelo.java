@@ -90,14 +90,15 @@ public class Modelo {
 
     private static final String INBOXWINDOWNAME = "Buzon de correo";
 
-    public final static  Color bgColorInboxJTable = new Color(245, 195, 195),
-            bgColorInboxNorthSouthBorderLayout = new Color(248, 224, 147),
-            bgColorInboxButton = new Color(248, 224, 147),
-            bgColorInboxButtonBorder = new Color(248, 224, 147),
-            bgColorInboxPanel = new Color(248, 224, 147);
+    public static Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 23);
+    public static Color bgColorInboxJTable = new Color(245, 240, 198);
+    public static Color bgColorInboxPanel = new Color(223, 236, 243);
+    public static Color bgColorInboxNorthSouthBorderLayout = new Color(174, 214, 241);
+    public static Color bgColorInboxButton = new Color(223, 236, 243);
+    public static Color bgColorInboxButtonBorder = new Color(0, 162, 253);
 
     public static final int windowsInboxWidth = 500, windowsInboxHeight = 500;
-    public static final Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 22);
+
     public static String getINBOXWINDOWNAME() {
         return INBOXWINDOWNAME;
     }

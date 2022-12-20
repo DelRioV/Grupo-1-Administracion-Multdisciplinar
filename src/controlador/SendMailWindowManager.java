@@ -3,6 +3,8 @@ package controlador;
 import modelo.Modelo;
 import vista.SendMailWindow;
 
+import java.awt.*;
+
 public class SendMailWindowManager {
 
     private SendMailWindow sendMailWindow = null;
@@ -23,10 +25,9 @@ public class SendMailWindowManager {
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getLabels().get(0));
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getTextFields().get(0));
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getLabels().get(1));
-        sendMailWindow.getPanels().get(0).add(sendMailWindow.getTextFields().get(1));
-        sendMailWindow.getPanels().get(0).add(sendMailWindow.getLabels().get(2));
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getTextAreas().get(0));
-        sendMailWindow.getPanels().get(0).add(sendMailWindow.getButtons().get(0));
-        sendMailWindow.getPanels().get(0).add(sendMailWindow.getButtons().get(1));
+        sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(0), BorderLayout.WEST);
+        sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(1), BorderLayout.EAST);
+        sendMailWindow.getPanels().get(0).add(sendMailWindow.getPanels().get(1));
     }
 }

@@ -4,8 +4,11 @@ package vista;
 import modelo.Modelo;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+
+import static javax.swing.BoxLayout.Y_AXIS;
 
 public class SendMailWindow extends JFrame implements Windows {
 
@@ -31,8 +34,16 @@ public class SendMailWindow extends JFrame implements Windows {
     public void createPanels(int numPanels) {
         for (int i = 0; i < numPanels; i++) {
             JPanel panel = new JPanel();
-            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-            panels.add(panel);
+            switch (i){
+                case 0: //Main Panel
+                    panel.setLayout(new BoxLayout(panel, Y_AXIS));
+                    panels.add(panel);
+                    break;
+                case 1: //Buttons panel
+                    panel.setLayout(new BorderLayout(20,20));
+                    panel.setBorder(new EmptyBorder(10,0,0,0));
+                    panels.add(panel);
+            }
         }
     }
 
@@ -58,13 +69,15 @@ public class SendMailWindow extends JFrame implements Windows {
     @Override
     public void createTextArea(int numTextArea) {
         for (int i = 0; i < numTextArea; i++) {
-            textAreas.add(new JTextArea(10,20));
+            JTextArea txtA = new JTextArea(10,50);
+            txtA.setLineWrap(true);
+            textAreas.add(txtA);
         }
     }
 
     @Override
     public void setDifferentProperties() {
-        this.setSize(500, 500);
+        this.setSize(model.getSENDMAILWINDOWWIDTH(), model.getSENDMAILWINDOWHEIGTH());
         this.setLayout(new FlowLayout());
         this.add(panels.get(0));
         this.setResizable(false);

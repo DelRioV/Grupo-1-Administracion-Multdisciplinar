@@ -14,11 +14,13 @@ public class Modelo {
 
     private final static String SENDMAILWINDOWNAME = "Enviar correo electrónico";
     private final static int SENDMAILWINDOWNUMBTNS = 2;
-    private final static int SENDMAILWINDOWTNUMEXTFIELDS = 2;
+    private final static int SENDMAILWINDOWTNUMEXTFIELDS = 1;
     private final static int SENDMAILWINDOWNUMTEXTAREA = 1;
-    private final static int SENDMAILWINDOWNUMLABELS = 3;
-    private final static int SENDMAILWINDOWNUMPANELS = 1;
-    private final static String[] SENDMAILWINDOWLABELTXT = {"Correo", "Asunto", "Mensaje"};
+    private final static int SENDMAILWINDOWNUMLABELS = 2;
+    private final static int SENDMAILWINDOWNUMPANELS = 2;
+    private final static int SENDMAILWINDOWHEIGTH = 350;
+    private final static int SENDMAILWINDOWWIDTH = 700;
+    private final static String[] SENDMAILWINDOWLABELTXT = {"Asunto", "Mensaje"};
     private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
 
     public int getLengthtextfields(){
@@ -69,5 +71,11 @@ public class Modelo {
     }
     public static String[] getSENDMAILWINDOWBTNSTXT() {
         return SENDMAILWINDOWBTNSTXT;
+    }
+    public static int getSENDMAILWINDOWHEIGTH() {
+        return SENDMAILWINDOWHEIGTH;
+    }
+    public static int getSENDMAILWINDOWWIDTH() {
+        return SENDMAILWINDOWWIDTH;
     }
 }

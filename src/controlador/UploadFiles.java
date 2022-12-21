@@ -7,12 +7,17 @@ import vista.Client;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class contains methods to upload files to the ftpServer
+ */
 public class UploadFiles {
-
-    private String servidor = "127.0.0.1"; //servidor
-
-
 
     public void upload(String path, String fileName) {
         try {

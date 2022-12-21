@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.ConnectionDB;
 
+import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

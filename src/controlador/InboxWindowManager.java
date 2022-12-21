@@ -6,6 +6,9 @@ import vista.InboxWindow;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * @author -Ismael Orellana Bello
  *         -Pablo Salvador Del Río Vergara
@@ -16,7 +19,7 @@ import java.awt.*;
  * @date 23/12/2022
  * Class that manage the inbox window
  */
-public class InboxWindowManager {
+public class InboxWindowManager implements ActionListener {
 
     //Inbox window
     private InboxWindow inboxWindow = null;
@@ -27,7 +30,7 @@ public class InboxWindowManager {
      * Constructor
      */
     public InboxWindowManager() {
-        createWindow();
+
     }
 
     /**
@@ -84,4 +87,8 @@ public class InboxWindowManager {
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        createWindow();
+    }
 }

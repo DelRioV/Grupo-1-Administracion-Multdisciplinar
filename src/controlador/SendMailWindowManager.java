@@ -1,9 +1,14 @@
 package controlador;
 
 import modelo.Modelo;
+import vista.MenuUI;
 import vista.SendMailWindow;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
 /**
  * @author -Ismael Orellana Bello
  *         -Pablo Salvador Del Río Vergara
@@ -14,7 +19,7 @@ import java.awt.*;
  * @date 23/12/2022
  * Class that controls the SendMailWindow
  */
-public class SendMailWindowManager {
+public class SendMailWindowManager implements ActionListener {
     //The window
     private SendMailWindow sendMailWindow = null;
     //Modelo
@@ -23,7 +28,8 @@ public class SendMailWindowManager {
     /**
      * Method that creates the window
      */
-    public void createWindow(){
+    @Override
+    public void actionPerformed(ActionEvent e) {
         sendMailWindow = new SendMailWindow(model.getSENDMAILWINDOWNAME());
         addComponents();
         sendMailWindow.setDifferentProperties();
@@ -32,7 +38,7 @@ public class SendMailWindowManager {
     /**
      * Method that set the components to the window
      */
-    private void addComponents() {
+    private void addComponents(){
         sendMailWindow.createButtons(model.getSENDMAILWINDOWNUMBTNS());
         sendMailWindow.createTextArea(model.getSENDMAILWINDOWNUMTEXTAREA());
         sendMailWindow.createLabels(model.getSENDMAILWINDOWNUMLABELS());

@@ -107,7 +107,7 @@ public class InboxWindow extends JFrame implements Windows {
         this.setLayout(new BorderLayout());
         this.add(panels.get(0), BorderLayout.CENTER);
         this.setResizable(false);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
 

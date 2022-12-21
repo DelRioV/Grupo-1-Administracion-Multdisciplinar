@@ -33,7 +33,7 @@ public class Modelo {
     private final static int SENDMAILWINDOWHEIGTH = 350;
     private final static int SENDMAILWINDOWWIDTH = 700;
     private final static String[] SENDMAILWINDOWLABELTXT = {"Asunto", "Mensaje"};
-    private final static String[] SENDMAILWINDOWBTNSTXT = {"Volver", "Enviar"};
+    private final static String[] SENDMAILWINDOWBTNSTXT = {"Cerrar", "Enviar"};
 
     public int getLengthtextfields() {
         return LENGTHTEXTFIELDS;

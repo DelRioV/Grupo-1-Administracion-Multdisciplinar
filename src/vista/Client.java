@@ -47,9 +47,17 @@ public class Client extends JFrame {
     //para saber el directorio y fichero seleccionado
     private static String direcSelec = direclnicial;
     private static String fileSelec = "";
+    public static String fic = "";
 
-    public Client() throws IOException {
+    public static int getUserId() {
+        return userId;
+    }
+
+    private static int userId;
+
+    public Client(int userId) throws IOException {
         super("CLIENTE BÁSICO FTP");
+        this.userId = userId;
         //para ver los comandos que se originan
         getClient().addProtocolCommandListener(new PrintCommandListener
                 (new PrintWriter(System.out)));
@@ -224,10 +232,6 @@ public class Client extends JFrame {
             ; //Se produce al cambiar de directorio
         }
 
-    }
-
-    public static void main(String[] args) throws IOException {
-        new Client();
     }
 
     public static JLabel getServerLabel() {

@@ -21,7 +21,28 @@ public class LoginUI extends JFrame{
         setResizable(false);
     }
 
-    public static void main(String[] args) {
-        new LoginUI();
+
+    public JPanel getLogin() {
+        return Login;
+    }
+
+    public JTextField getTxfUser() {
+        return txfUser;
+    }
+
+    public JPasswordField getPsf() {
+        return psf;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public JButton getForgotPasswordButton() {
+        return forgotPasswordButton;
+    }
+
+    public JPanel getLoginPanel() {
+        return loginPanel;
     }
 }

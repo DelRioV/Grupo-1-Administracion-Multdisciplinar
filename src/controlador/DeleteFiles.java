@@ -32,6 +32,7 @@ public class DeleteFiles implements ActionListener {
             System.out.println(Client.getFileSelec());
             if (Client.getClient().deleteFile(f.getPath())) {
                 JOptionPane.showMessageDialog(null, "Archivo borrado");
+                new BDLogic().insertMove(Client.getUserId(), "Delete", f.getName());
             } else {
                 JOptionPane.showMessageDialog(null, "No se ha podido borrar el archivo");
             }

@@ -59,7 +59,7 @@ public class EMail {
     public String[] listAttachments() throws MessagingException {
         String[] attachmentList = new String[attachments.size()];
         for (int i = 0; i < attachments.size(); i++) {
-            attachmentList[i] = attachments.get(i).getDataHandler().getName();
+           // attachmentList[i] = attachments.get(i).getDataHandler().getName();
         }
         return attachmentList;
     }

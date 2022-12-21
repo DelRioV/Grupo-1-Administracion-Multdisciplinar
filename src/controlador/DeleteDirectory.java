@@ -29,6 +29,7 @@ public class DeleteDirectory implements ActionListener {
             try {
                 if (client.removeDirectory(directory)) {
                     String message = directoryName.trim() + " => Se ha eliminado correctamente...";
+                    new BDLogic().insertMove(Client.getUserId(), "Delete", directory);
                     JOptionPane.showMessageDialog(null, message);
                     field.setText(message);
                     client.changeWorkingDirectory(Client.getDirecSelec());

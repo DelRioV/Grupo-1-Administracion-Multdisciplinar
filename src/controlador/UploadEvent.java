@@ -14,6 +14,7 @@ public class UploadEvent implements ActionListener {
 
     private UploadFilesAuxWindow uploadFilesAuxWindow = null;
     private Modelo model = new Modelo();
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Subir fichero")){
@@ -24,6 +25,7 @@ public class UploadEvent implements ActionListener {
             try{
                 File f = uploadFilesAuxWindow.getF().getSelectedFile();
                 new UploadFiles().upload(f.getAbsolutePath(),uploadFilesAuxWindow.getTextFields().get(1).getText());
+                Client.fic = f.getName();
                 uploadFilesAuxWindow.dispose();
                 JOptionPane.showMessageDialog(null,"Fichero subido correctamente");
             }catch (Exception er){

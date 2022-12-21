@@ -14,6 +14,8 @@ public class CreateDirectory implements ActionListener {
     private FTPClient client;
     private JLabel field;
 
+    private static String fic = "";
+
     public CreateDirectory(FTPClient client, JLabel field) {
         this.client = client;
         this.field = field;
@@ -38,6 +40,7 @@ public class CreateDirectory implements ActionListener {
                     FTPFile[] ff2 = null;
                     //obtener ficheros del directorio actual
                     ff2 = client.listFiles();
+                    fic = directorio;
                 } else
                     JOptionPane.showMessageDialog(null,
                             directoryName.trim() + " => No se ha podido crear ...");
@@ -52,6 +55,7 @@ public class CreateDirectory implements ActionListener {
         creaDir();
         try {
             Client.fillList(Client.getClient().listFiles());
+            new BDLogic().insertMove(Client.getUserId(),"Create",fic);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

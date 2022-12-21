@@ -85,6 +85,7 @@ public class SendMailWindow extends JFrame implements Windows {
         this.setSize(model.getSENDMAILWINDOWWIDTH(), model.getSENDMAILWINDOWHEIGTH());
         this.setLayout(new FlowLayout());
         this.add(panels.get(0));
+        this.setLocationRelativeTo(new JFrame());
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);

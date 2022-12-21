@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import static controlador.Controlador.menuUI;
+
 /**
  * @author -Ismael Orellana Bello
  *         -Pablo Salvador Del Río Vergara
@@ -53,8 +56,8 @@ public class LoginEvent implements ActionListener {
                         "'"+loginUI.getTxfUser().getText()+"' or Email = '"+loginUI.getTxfUser().getText()+"'");
                 rs.first();
                 MenuData md = new MenuData(rs.getInt(1), rs.getString(2));
-                MenuUI ui = new MenuUI();
-                ui.setDifferentProperties();
+                menuUI = new MenuUI();
+                menuUI.setDifferentProperties();
                 loginUI.setVisible(false);
             } catch (Exception ex) {
 

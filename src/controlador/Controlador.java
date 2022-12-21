@@ -3,6 +3,7 @@ import modelo.ConnectionDB;
 import modelo.ConnectionData;
 import org.apache.commons.net.ftp.FTPClient;
 import vista.LoginUI;
+import vista.MenuUI;
 import vista.UploadFilesAuxWindow;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ import java.sql.SQLException;
 public class Controlador {
 
     static LoginUI loginUI;
+    static MenuUI menuUI;
 
     /**
      * Empty Constructor

@@ -161,7 +161,9 @@ public class MenuUI extends JFrame{
                 }
             }
         });*/
-
+        btnMail.addActionListener(new InboxWindowManager());
+        btnSendMail.addActionListener(new SendMailWindowManager());
+        btnLogOut.addActionListener(new LogOutEvent());
         btnDelDir.addActionListener(new DeleteDirectory(MenuData.getClient(), field));
         btnCreateDir.addActionListener(new CreateDirectory(MenuData.getClient(), field));
         btnDownload.addActionListener(new DownloadFile(MenuData.getClient()));

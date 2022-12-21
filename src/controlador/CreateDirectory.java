@@ -3,24 +3,43 @@ package controlador;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import vista.Client;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class is for create directories in the FTPServer
+ */
 public class CreateDirectory implements ActionListener {
 
+    //Client
     private FTPClient client;
+    //Label
     private JLabel field;
-
+    //FIC NAME
     private static String fic = "";
 
+    /**
+     * Constructor
+     *
+     * @param client -FTPClient the client
+     * @param field -JLabel a label
+     */
     public CreateDirectory(FTPClient client, JLabel field) {
         this.client = client;
         this.field = field;
     }
 
+    /**
+     * Method that creates a new dir in the server
+     */
     public void creaDir() {
         String directoryName = JOptionPane.showInputDialog(null,
                 "Introduce el nombre del directorio", "carpeta");
@@ -50,6 +69,10 @@ public class CreateDirectory implements ActionListener {
         }
     }
 
+    /**
+     * Method of the button
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         creaDir();

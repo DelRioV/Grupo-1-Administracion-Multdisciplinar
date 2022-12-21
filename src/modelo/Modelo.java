@@ -1,8 +1,18 @@
 package modelo;
-
 import java.awt.*;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class contains information about all the project Information
+ */
 public class Modelo {
+
+    // A lot of constants and Getter and Setters
 
     private final static String LOGINWINDOWNAME = "Ventana de inicio de sesión";
     private final static int LOGINWINDOWNUMBOTONES = 1;

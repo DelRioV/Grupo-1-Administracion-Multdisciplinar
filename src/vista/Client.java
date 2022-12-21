@@ -12,7 +12,16 @@ import java.awt.*;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class that contains all the window CLient
+ */
 public class Client extends JFrame {
     private static List<FTPFile> listFileDir;
     private static final long serialVersionUID = 1L;

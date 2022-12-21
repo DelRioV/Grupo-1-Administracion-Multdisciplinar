@@ -4,18 +4,34 @@ import modelo.Modelo;
 import vista.SendMailWindow;
 
 import java.awt.*;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * Class that controls the SendMailWindow
+ */
 public class SendMailWindowManager {
-
+    //The window
     private SendMailWindow sendMailWindow = null;
+    //Modelo
     private Modelo model = new Modelo();
 
+    /**
+     * Method that creates the window
+     */
     public void createWindow(){
         sendMailWindow = new SendMailWindow(model.getSENDMAILWINDOWNAME());
         addComponents();
         sendMailWindow.setDifferentProperties();
     }
 
+    /**
+     * Method that set the components to the window
+     */
     private void addComponents() {
         sendMailWindow.createButtons(model.getSENDMAILWINDOWNUMBTNS());
         sendMailWindow.createTextArea(model.getSENDMAILWINDOWNUMTEXTAREA());

@@ -127,7 +127,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <scrollpane id="fc0a8" binding="barraDesplazamiento">
+          <scrollpane id="fc0a8" binding="barraDesplazamiento" custom-create="true">
             <constraints>
               <grid row="1" column="1" row-span="8" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -150,53 +150,57 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="19fbf" class="javax.swing.JButton" binding="button5" default-binding="true">
+              <component id="19fbf" class="javax.swing.JButton" binding="btnDelFile">
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <label value="DeleteFiles"/>
+                  <text value="DeleteFiles"/>
                 </properties>
               </component>
-              <component id="244ef" class="javax.swing.JButton" binding="button6" default-binding="true">
+              <component id="244ef" class="javax.swing.JButton" binding="btnRenameFile">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <horizontalTextPosition value="11"/>
-                  <text value="Button"/>
+                  <label value="Rename"/>
+                  <text value="Rename"/>
                 </properties>
               </component>
-              <component id="eada0" class="javax.swing.JButton" binding="button4" default-binding="true">
+              <component id="eada0" class="javax.swing.JButton" binding="btnUpload">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <label value="Upload"/>
+                  <text value="Upload"/>
                 </properties>
               </component>
-              <component id="1d9d7" class="javax.swing.JButton" binding="button3" default-binding="true">
+              <component id="1d9d7" class="javax.swing.JButton" binding="btnDownload">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Download"/>
                 </properties>
               </component>
-              <component id="31ad" class="javax.swing.JButton" binding="button2" default-binding="true">
+              <component id="31ad" class="javax.swing.JButton" binding="btnCreateDir">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <label value="Create"/>
+                  <text value="Create"/>
                 </properties>
               </component>
-              <component id="442db" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="442db" class="javax.swing.JButton" binding="btnDelDir">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Delete"/>
                 </properties>
               </component>
             </children>

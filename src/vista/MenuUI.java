@@ -1,14 +1,13 @@
 package vista;
 
+import controlador.*;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,21 +18,28 @@ public class MenuUI extends JFrame{
 
     private JButton btnSendMail;
     private JButton btnMail;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
-    private JButton button6;
+    private JButton btnDelDir;
+    private JButton btnCreateDir;
+    private JButton btnDownload;
+    private JButton btnUpload;
+    private JButton btnDelFile;
+    private JButton btnRenameFile;
     private JPanel pnlMenu;
     private JPanel pnlFTP;
     private JScrollPane barraDesplazamiento;
     private JPanel pnlMain;
     private JButton btnLogOut;
     private JButton btnUser;
-/*
+
     private static List<FTPFile> listFileDir;
     private static final long serialVersionUID = 1L;
+
+    private static JLabel serverLabel = new JLabel();
+    private static JLabel userLabel = new JLabel();
+    private static JLabel rootLabel = new JLabel();
+    //Campos de mensajes parte inferior
+    private static JLabel directoryTree = new JLabel();
+    private static JLabel field = new JLabel();
 
     //Lista para los datos del directorio
     private static JList listDirec = new JList();
@@ -56,14 +62,13 @@ public class MenuUI extends JFrame{
     }
 
     private static int userId;
-*/
+
 
     public MenuUI(int userId) throws IOException{
         super("CLIENTE BÁSICO FTP");
-/*        this.userId = userId;
+        this.userId = userId;
         //para ver los comandos que se originan
-        getClient().addProtocolCommandListener(new PrintCommandListener
-                (new PrintWriter(System.out)));
+        getClient().addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         getClient().connect(getServer()); //conexión al servidor
         setLogin(getClient().login(getUser(), getPasw()));
         //Se establece el directorio de trabajo actual
@@ -73,28 +78,10 @@ public class MenuUI extends JFrame{
         //Construyendo la lista de ficheros y directorios
         //del directorio de trabajo actual
         fillList(files);
-        //preparar campos de pantalla
-        getDirectoryTree().setText("« ARBOL DE DIRECTORIOS CONSTRUIDO »");
-        getServerLabel().setText("Servidor FTP: " + getServer());
-        getUserLabel().setText("Usuario: " + getUser());
-        getRootLabel().setText("DIRECTORIO RAIZ: " + direclnicial);
         //Preparación de la lista
         //se configura el tipo de selección para que solo se pueda
         //seleccionar un elemento de la lista
-        getListDirec().setSelectionMode(ListSelectionModel.
-                SINGLE_SELECTION);
-        //barra de desplazamiento para la lista
-        JScrollPane barraDesplazamiento = new
-                JScrollPane(getListDirec());
-        barraDesplazamiento.setPreferredSize
-                (new Dimension(335, 420));
-        barraDesplazamiento.setBounds(new Rectangle
-                (5, 65, 335, 420));
-        c.add(barraDesplazamiento);
-        c.setLayout(new FlowLayout());
-        //se añaden el resto de los campos de pantalla
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(510, 600);
+        getListDirec().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         //ACCIONES AL PULSAR en la lista o en los botones
         getListDirec().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -106,7 +93,7 @@ public class MenuUI extends JFrame{
                 }
                 if (e.getValueIsAdjusting()) {
                     //elemento que se ha seleccionado de la lista
-                    String fic = getListDirec().getSelectedValue().toString();
+                    fic = getListDirec().getSelectedValue().toString();
 
                     if (getListDirec().getSelectedIndex() == 0) {
                         //Se hace clic en el primer elemento del JList
@@ -122,7 +109,6 @@ public class MenuUI extends JFrame{
                                 getClient().changeWorkingDirectory(getDirecSelec());
                                 //se obtienen ficheros y directorios
                                 ff2 = getClient().listFiles();
-                                getDirectoryTree().setText("");
                                 //se llena la lista con fich. del directorio padre
                                 fillList(ff2);
                             } catch (IOException ex) {
@@ -147,8 +133,6 @@ public class MenuUI extends JFrame{
                                     if (direcSelec2.contains(getUser()) || Client.getUser().equals("admin")) {
                                         getClient().changeWorkingDirectory(direcSelec2);
                                         ff2 = getClient().listFiles();
-                                        getDirectoryTree().setText("DIRECTORIO: " + fic + ", "
-                                                + ff2.length + " elementos");
                                         //directorio actual
                                         setDirecSelec(direcSelec2);
                                         //se llena la lista con datos del directorio
@@ -173,7 +157,13 @@ public class MenuUI extends JFrame{
                 }
             }
         });
-*/
+
+        btnDelDir.addActionListener(new DeleteDirectory(client, field));
+        btnCreateDir.addActionListener(new CreateDirectory(client, field));
+        btnDownload.addActionListener(new DownloadFile(client));
+        btnUpload.addActionListener(new UploadEvent());
+        btnDelFile.addActionListener(new DeleteFiles());
+        btnRenameFile.addActionListener(new EventRename(client, server, getUser(), pasw));
 
 
         setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
@@ -181,11 +171,10 @@ public class MenuUI extends JFrame{
         setMinimumSize(new Dimension(900, 500));
         setLocationRelativeTo(new JFrame());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        barraDesplazamiento = new JScrollPane(Client.getListDirec());
         setVisible(true);
         setResizable(false);
     }
-/*
+
     public static void fillList(FTPFile[] files) {
         if (files == null) return;
         //se crea un objeto DefaultListModel
@@ -193,7 +182,7 @@ public class MenuUI extends JFrame{
         modeloLista = new DefaultListModel();
         //se definen propiedades para la lista, color y tipo de fuente
         getListDirec().setForeground(Color.blue);
-        Font fuente = new Font("Courier", Font.PLAIN, 12);
+        Font fuente = new Font("Roboto Light", Font.PLAIN, 12);
         getListDirec().setFont(fuente);
         //se eliminan los elementos de la lista
         getListDirec().removeAll();
@@ -225,39 +214,7 @@ public class MenuUI extends JFrame{
         } catch (NullPointerException n) {
             ; //Se produce al cambiar de directorio
         }
-*/
-    }
-/*
-    public static JLabel getServerLabel() {
-        return serverLabel;
-    }
 
-    public static void setServerLabel(JLabel serverLabel) {
-        Client.serverLabel = serverLabel;
-    }
-
-    public static JLabel getUserLabel() {
-        return userLabel;
-    }
-
-    public static void setUserLabel(JLabel userLabel) {
-        Client.userLabel = userLabel;
-    }
-
-    public static JLabel getRootLabel() {
-        return rootLabel;
-    }
-
-    public static void setRootLabel(JLabel rootLabel) {
-        Client.rootLabel = rootLabel;
-    }
-
-    public static JLabel getDirectoryTree() {
-        return directoryTree;
-    }
-
-    public static void setDirectoryTree(JLabel directoryTree) {
-        Client.directoryTree = directoryTree;
     }
 
     public static JList getListDirec() {
@@ -334,11 +291,19 @@ public class MenuUI extends JFrame{
     }
 
     public static void setListFileDir(List<FTPFile> listFileDir) {
-        Client.listFileDir = listFileDir;
+        MenuUI.listFileDir = listFileDir;
     }
-*/
+
 
     public static void main(String[] args) {
-        new MenuUI();
+        try {
+            new MenuUI(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void createUIComponents() {
+        barraDesplazamiento = new JScrollPane(getListDirec());
     }
 }

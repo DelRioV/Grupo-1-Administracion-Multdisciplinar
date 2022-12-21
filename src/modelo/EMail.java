@@ -1,4 +1,4 @@
-/*package modelo;
+package modelo;
 
 import java.util.ArrayList;
 
@@ -64,4 +64,3 @@ public class EMail {
         return attachmentList;
     }
 }
-*/

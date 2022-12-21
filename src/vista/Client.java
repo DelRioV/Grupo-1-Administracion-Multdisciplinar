@@ -30,7 +30,6 @@ public class Client extends JFrame {
     JButton btnCreateDir = new JButton("Crear carpeta");
     JButton btnDelDir = new JButton("Eliminar carpeta");
     JButton btnExit = new JButton("Salir");
-
     JButton btnRenameFile = new JButton("Renombrar fichero");
 
     //Lista para los datos del directorio
@@ -343,5 +342,12 @@ public class Client extends JFrame {
         Client.listFileDir = listFileDir;
     }
 
+    public static void main(String[] args) {
+        try {
+            new Client(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

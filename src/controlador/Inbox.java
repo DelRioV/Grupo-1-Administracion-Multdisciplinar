@@ -1,4 +1,4 @@
-/*package controlador;
+package controlador;
 
 import java.io.*;
 import java.util.*;
@@ -126,4 +126,3 @@ public class Inbox implements AutoCloseable {
     if (store != null && store.isConnected()) { store.close(); }
   }
 }
-*/

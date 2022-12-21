@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.ConnectionDB;
 
+import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,15 +23,20 @@ public class BDLogic {
         String query = "Select Email from Users where Email = '"+username+"' or Username = '"+username+"'";
         String pass [] = getPass();
         boolean cond = false;
-        for(int i = 0;i<pass.length;i++){
-            if(pass[i].equals(password)){
-                cond = true;
-                i = pass.length;
+        for (int i = 0; i < pass.length; i++) {
+            try {
+                if (pass[i].equals(password)) {
+                    cond = true;
+                    i = pass.length;
+                }
+            }catch (NullPointerException npe){
+                JOptionPane.showMessageDialog(null, "Contraseña o usuarios erroneos");
             }
+
         }
         try {
             ResultSet rs = st.executeQuery(query);
-            if(rs.next() && cond){
+            if (rs.next() && cond) {
                 condition = true;
             }
         } catch (SQLException e) {
@@ -63,7 +69,6 @@ public class BDLogic {
                 System.out.println(response[counter-1]);
             }
         } catch (SQLException e) {
-
         }
         return response;
     }

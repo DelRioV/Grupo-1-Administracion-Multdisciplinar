@@ -22,7 +22,7 @@ public class UploadFilesAuxWindow extends JFrame implements Windows{
     @Override
     public void createButtons(int numButtons) {
         for(int i = 0;i<numButtons;i++){
-            buttons.add(new JButton(model.getUploadwindowbuttonname()));
+           // buttons.add(new JButton(model.getUploadwindowbuttonname()));
         }
     }
 
@@ -45,7 +45,7 @@ public class UploadFilesAuxWindow extends JFrame implements Windows{
     @Override
     public void createLabels(int numLabels) {
         for(int i = 0;i<numLabels;i++){
-            labels.add(new JLabel(model.getUploadwindoslabels()[i]));
+            //labels.add(new JLabel(model.getUploadwindoslabels()[i]));
         }
     }
 

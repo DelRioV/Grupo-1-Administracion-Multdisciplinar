@@ -54,9 +54,11 @@ public class DownloadFile implements ActionListener {
                 client.setFileType(FTP.BINARY_FILE_TYPE);
                 BufferedOutputStream out = new BufferedOutputStream(
                         new FileOutputStream(fullRute));
-                if (client.retrieveFile(NombreCompleto, out))
+                if (client.retrieveFile(NombreCompleto, out)) {
                     JOptionPane.showMessageDialog(null, nombreFichero
                             + " => Se ha descargado correctamente ...");
+                    new BDLogic().insertMove(Client.getUserId(), "Download", file.getName());
+                }
                 else
                     JOptionPane.showMessageDialog(null, nombreFichero
                             + " => No se ha podido descargar ...");

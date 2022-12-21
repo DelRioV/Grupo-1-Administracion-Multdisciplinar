@@ -1,94 +1,71 @@
 package controlador;
 
-
-
-import modelo.CredentialsConstants;
-
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
+
 import java.io.*;
 import java.util.Properties;
 
-/**
- * <p>Sender class.</p>
- *
- * @author : Ismael Orellano Bello / Pablo Salvador Del Rio Vergara
- * @version : 1.0
- * Class that sends out the email
- */
 public class Sender {
 
+    public static String HOST_GMAIL = "smtp.gmail.com";
+    public static String AUTH_PORT_GMAIL = "587";
 
-    private Properties mailProp = new Properties();
+    private String host;
+    private String authPort;
+    private Session session = null;
 
-    private Properties credentialProp = new Properties();
-
-
-
-    /**
-     * Constructor that loads the credential within CredentialsConstants.java
-     */
-    public Sender() {
-        try {
-            // Loads all the properties of file "mail.properties".
-            mailProp.load(getClass().getClassLoader().getResourceAsStream("modelo/mail.properties"));
-            credentialProp.load(getClass().getClassLoader().getResourceAsStream("modelo/credentials.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Sender(String host, String authPort) {
+        this.host = host;
+        this.authPort = authPort;
     }
 
-    /**
-     * Method that create the email and send it
-     *
-     * @param from    - String (Emisor)
-     * @param to      - String (Remitent)
-     * @param subject - String (the subject of the email)
-     * @param content - String (the text inside it)
-     * @return <ol>
-     * <li>boolean true - when is correctly send </li>
-     * <li>boolean false - when canÂ´t be send due to an error</li>
-     * </ol>
-     */
-    public void send(String from, String to, String subject, String content) {
-        // Get the Session object.// and pass username and password
-        Properties prop = createSession();
+    public void connect(String username, String password) {
+        Properties props = new Properties();
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.port", authPort);
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
 
-        Session session = Session.getDefaultInstance(prop);
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));   //Se podrían añadir varios de la misma manera
-            message.setSubject(subject);
-            message.setText(content);
-            Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", to, "whvazoisbscigaek");
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        }
-        catch (MessagingException me) {
-            me.printStackTrace();   //Si se produce un error
-        }
-
+        session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
     }
 
-    /**
-     * Method that creates the session for send the email
-     *
-     * @return session - Session
-     */
-    private Properties createSession() {
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
-        props.put("mail.smtp.user", "Xxismaelor03xX@gmail.com");
-        props.put("mail.smtp.clave", "whvazoisbscigaek");    //La clave de la cuenta
-        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
-        props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "587");
-        //Session session = Session.getInstance(props);
-        return props;
+    public Message createNewMail() throws MessagingException {
+        Message message = new MimeMessage(session);
+        message.setContent(new MimeMultipart());
+        return message;
     }
 
+    public void setFrom(Message message, String address) throws AddressException, MessagingException {
+        message.setFrom(new InternetAddress(address));
+    }
 
+    public void setRecipients(Message message, String addresses) throws AddressException, MessagingException {
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(addresses));
+    }
+    
+    public void setSubject(Message message, String subject) throws MessagingException {
+        message.setSubject(subject);
+    }
+
+    public void addBody (Message message, String body) throws MessagingException, IOException {
+        MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.setContent(body, "text/html; charset=utf-8");
+        ((MimeMultipart) message.getContent()).addBodyPart(mimeBodyPart);
+    }
+
+    public void addAttachment (Message message, File file) throws IOException, MessagingException{
+        MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+        attachmentBodyPart.attachFile(file);
+        ((MimeMultipart) message.getContent()).addBodyPart(attachmentBodyPart);
+    }
+
+    public void sendMail(Message message) throws MessagingException {
+        Transport.send(message);
+    }
 }

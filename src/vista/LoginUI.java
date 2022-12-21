@@ -13,6 +13,7 @@ public class LoginUI extends JFrame{
 
     public LoginUI(){
         super("Login");
+        setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
         setContentPane(loginPanel);
         setMinimumSize(new Dimension(500, 700));
         setLocationRelativeTo(new JFrame());
@@ -20,7 +21,6 @@ public class LoginUI extends JFrame{
         setVisible(true);
         setResizable(false);
     }
-
 
     public JPanel getLogin() {
         return Login;

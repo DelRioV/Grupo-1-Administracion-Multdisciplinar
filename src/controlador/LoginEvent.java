@@ -3,6 +3,7 @@ package controlador;
 import modelo.ConnectionDB;
 import vista.Client;
 import vista.LoginUI;
+import vista.MenuUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -51,7 +52,8 @@ public class LoginEvent implements ActionListener {
                 ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser from Users where Username = " +
                         "'"+loginUI.getTxfUser().getText()+"' or Email = '"+loginUI.getTxfUser().getText()+"'");
                 rs.first();
-                new Client(rs.getInt(1));
+                new MenuUI(rs.getInt(1));
+                loginUI.setVisible(false);
             } catch (Exception ex) {
 
             }

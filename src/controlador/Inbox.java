@@ -1,15 +1,22 @@
 package controlador;
-
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
-
 import modelo.EMail;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class contains methods to have an inbox
+ */
 public class Inbox implements AutoCloseable {
 
+  //Host
   public static String HOST_GMAIL = "imap.gmail.com";
-
   private final String host;
   private final String user;
   private final String password;

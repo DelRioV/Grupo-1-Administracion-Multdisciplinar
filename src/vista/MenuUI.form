@@ -86,9 +86,9 @@
               <defaultCapable value="true"/>
               <font name="Roboto Light"/>
               <foreground color="-4515818"/>
-              <label value="Log Out"/>
+              <label value="Cerrar Sesion"/>
               <selected value="false"/>
-              <text value="Log Out"/>
+              <text value="Cerrar Sesion"/>
             </properties>
           </component>
           <vspacer id="25ba6">
@@ -101,18 +101,16 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="580ec" class="javax.swing.JButton" binding="btnUser">
+          <component id="329c2" class="javax.swing.JLabel" binding="lblUserName" custom-create="true">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-1"/>
-              <borderPainted value="true"/>
-              <contentAreaFilled value="false"/>
               <font name="Roboto Light"/>
               <foreground color="-1"/>
-              <label value="User"/>
-              <text value="User"/>
+              <horizontalAlignment value="10"/>
+              <opaque value="false"/>
+              <visible value="true"/>
             </properties>
           </component>
         </children>

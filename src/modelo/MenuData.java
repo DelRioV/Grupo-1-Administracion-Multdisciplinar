@@ -1,7 +1,5 @@
-package vista;
+package modelo;
 
-import controlador.*;
-import modelo.MenuData;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -15,43 +13,17 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
-public class MenuUI extends JFrame{
+public class MenuData {
 
-    private JButton btnMail;
-    private JButton btnSendMail;
-    private JButton btnDelDir;
-    private JButton btnCreateDir;
-    private JButton btnDownload;
-    private JButton btnUpload;
-    private JButton btnDelFile;
-    private JButton btnRenameFile;
-    private JPanel pnlMenu;
-    private JPanel pnlFTP;
-    private JScrollPane barraDesplazamiento;
-    private JPanel pnlMain;
-    private JButton btnLogOut;
-    private JLabel lblUserName;
-
-    /*
     private static List<FTPFile> listFileDir;
     private static final long serialVersionUID = 1L;
-
-    private static JLabel serverLabel = new JLabel();
-    private static JLabel userLabel = new JLabel();
-    private static JLabel rootLabel = new JLabel();
-    //Campos de mensajes parte inferior
-    private static JLabel directoryTree = new JLabel();
-    */private static JLabel field = new JLabel();/*
-
     //Lista para los datos del directorio
     private static JList listDirec = new JList();
-    //contenedor
-    private final Container c = getContentPane();
     //Datos del servidor FTP - Servidor local
     private static FTPClient client = new FTPClient();//cliente FTP
-    private String server = "127.0.0.1";
+    private static String server = "127.0.0.1";
     private static String user = "admin";
-    private String pasw = "admin";
+    private static String pasw = "admin";
     private boolean login;
     static String direclnicial = "/";
     //para saber el directorio y fichero seleccionado
@@ -64,12 +36,11 @@ public class MenuUI extends JFrame{
     }
 
     private static int userId;
-    private static String userName;*/
+    private static String userName;
 
-
-    public MenuUI() throws IOException{
-        super("CLIENTE BÁSICO FTP");
-        /*this.userId = userId;
+    public MenuData(int userId, String userName) throws IOException{
+        this.userId = userId;
+        this.userName = userName;
         //para ver los comandos que se originan
         getClient().addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         getClient().connect(getServer()); //conexión al servidor
@@ -133,7 +104,7 @@ public class MenuUI extends JFrame{
                                     else
                                         direcSelec2 = getDirecSelec() + "/" + fic;
                                     FTPFile[] ff2 = null;
-                                    if (direcSelec2.contains(getUser()) || Client.getUser().equals("admin")) {
+                                    if (direcSelec2.contains(getUser()) || MenuData.getUser().equals("admin")) {
                                         getClient().changeWorkingDirectory(direcSelec2);
                                         ff2 = getClient().listFiles();
                                         //directorio actual
@@ -159,28 +130,10 @@ public class MenuUI extends JFrame{
                 } catch (Exception ex) {
                 }
             }
-        });*/
-
-        btnDelDir.addActionListener(new DeleteDirectory(MenuData.getClient(), field));
-        btnCreateDir.addActionListener(new CreateDirectory(MenuData.getClient(), field));
-        btnDownload.addActionListener(new DownloadFile(MenuData.getClient()));
-        btnUpload.addActionListener(new UploadEvent());
-        btnDelFile.addActionListener(new DeleteFiles());
-        btnRenameFile.addActionListener(new EventRename(MenuData.getClient(), MenuData.getServer(), MenuData.getUser(), MenuData.getPasw()));
-
+        });
     }
 
-    public void setDifferentProperties(){
-        setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
-        setContentPane(pnlMain);
-        setMinimumSize(new Dimension(900, 500));
-        setLocationRelativeTo(new JFrame());
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
-        setResizable(false);
-    }
-
-    /*public static void fillList(FTPFile[] files) {
+    public static void fillList(FTPFile[] files) {
         if (files == null) return;
         //se crea un objeto DefaultListModel
         DefaultListModel modeloLista = new DefaultListModel();
@@ -220,14 +173,14 @@ public class MenuUI extends JFrame{
             ; //Se produce al cambiar de directorio
         }
 
-    }*/
+    }
 
-    /*public static JList getListDirec() {
+    public static JList getListDirec() {
         return listDirec;
     }
 
     public static void setListDirec(JList listDirec) {
-        MenuUI.listDirec = listDirec;
+        MenuData.listDirec = listDirec;
     }
 
     public static FTPClient getClient() {
@@ -235,7 +188,7 @@ public class MenuUI extends JFrame{
     }
 
     public static void setClient(FTPClient client) {
-        MenuUI.client = client;
+        MenuData.client = client;
     }
 
     public static String getDirecSelec() {
@@ -243,7 +196,7 @@ public class MenuUI extends JFrame{
     }
 
     public static void setDirecSelec(String direcSelec) {
-        MenuUI.direcSelec = direcSelec;
+        MenuData.direcSelec = direcSelec;
     }
 
     public static String getFileSelec() {
@@ -251,14 +204,14 @@ public class MenuUI extends JFrame{
     }
 
     public static void setFileSelec(String fileSelec) {
-        MenuUI.fileSelec = fileSelec;
+        MenuData.fileSelec = fileSelec;
     }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public String getServer() {
+    public static String getServer() {
         return server;
     }
 
@@ -274,7 +227,15 @@ public class MenuUI extends JFrame{
         this.user = user;
     }
 
-    public String getPasw() {
+    public static String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String user) {
+        this.user = userName;
+    }
+
+    public static String getPasw() {
         return pasw;
     }
 
@@ -296,12 +257,7 @@ public class MenuUI extends JFrame{
     }
 
     public static void setListFileDir(List<FTPFile> listFileDir) {
-        MenuUI.listFileDir = listFileDir;
+        MenuData.listFileDir = listFileDir;
     }
-    */
 
-    private void createUIComponents() {
-        lblUserName = new JLabel(MenuData.getUserName());
-        barraDesplazamiento = new JScrollPane(MenuData.getListDirec());
-    }
 }

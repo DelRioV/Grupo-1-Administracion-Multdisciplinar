@@ -1,6 +1,6 @@
 package controlador;
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTPClient;
-import vista.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,10 +23,10 @@ public class DeleteFiles implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
+        if (MenuData.getFileSelec().contains(MenuData.getUser()) || MenuData.getUser().equals("admin")) {
             deleteFiles();
             try {
-                Client.fillList(Client.getClient().listFiles());
+                MenuData.fillList(MenuData.getClient().listFiles());
             } catch (IOException ex) {
 
             }
@@ -38,11 +38,11 @@ public class DeleteFiles implements ActionListener {
      */
     private static void deleteFiles() {
         try {
-            File f = new File(Client.getFileSelec());
-            System.out.println(Client.getFileSelec());
-            if (Client.getClient().deleteFile(f.getPath())) {
+            File f = new File(MenuData.getFileSelec());
+            System.out.println(MenuData.getFileSelec());
+            if (MenuData.getClient().deleteFile(f.getPath())) {
                 JOptionPane.showMessageDialog(null, "Archivo borrado");
-                new BDLogic().insertMove(Client.getUserId(), "Delete", f.getName());
+                new BDLogic().insertMove(MenuData.getUserId(), "Delete", f.getName());
             } else {
                 JOptionPane.showMessageDialog(null, "No se ha podido borrar el archivo");
             }

@@ -1,8 +1,7 @@
 package controlador;
 
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTPClient;
-import vista.Client;
-
 import javax.swing.*;
 import java.io.IOException;
 /**
@@ -38,12 +37,12 @@ public class RenameFiles {
      * Method that renames files from the FTPServer
      */
     public void renameFile() {
-        if (Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
+        if (MenuData.getFileSelec().contains(MenuData.getUser()) || MenuData.getUser().equals("admin")) {
             try {
-                client.changeWorkingDirectory(Client.getDirecSelec());
-                client.rename(Client.getFileSelec(), newName);
-                Client.fillList(Client.getClient().listFiles());
-                new BDLogic().insertMove(Client.getUserId(), "Rename", fic);
+                client.changeWorkingDirectory(MenuData.getDirecSelec());
+                client.rename(MenuData.getFileSelec(), newName);
+                MenuData.fillList(MenuData.getClient().listFiles());
+                new BDLogic().insertMove(MenuData.getUserId(), "Rename", fic);
             } catch (IOException ioe) {
 
             }

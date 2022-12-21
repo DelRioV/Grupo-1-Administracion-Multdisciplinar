@@ -1,7 +1,7 @@
 package controlador;
 
 import modelo.ConnectionDB;
-import vista.Client;
+import modelo.MenuData;
 import vista.LoginUI;
 import vista.MenuUI;
 
@@ -49,10 +49,12 @@ public class LoginEvent implements ActionListener {
         boolean cond = new BDLogic().getAccess(loginUI.getTxfUser().getText(),final_pass);
         if(cond){
             try {
-                ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser from Users where Username = " +
+                ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser, Username from Users where Username = " +
                         "'"+loginUI.getTxfUser().getText()+"' or Email = '"+loginUI.getTxfUser().getText()+"'");
                 rs.first();
-                new MenuUI(rs.getInt(1));
+                MenuData md = new MenuData(rs.getInt(1), rs.getString(2));
+                MenuUI ui = new MenuUI();
+                ui.setDifferentProperties();
                 loginUI.setVisible(false);
             } catch (Exception ex) {
 

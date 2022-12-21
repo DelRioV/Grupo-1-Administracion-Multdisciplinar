@@ -1,8 +1,8 @@
 package controlador;
 
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
-import vista.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,15 +38,15 @@ public class DownloadFile implements ActionListener {
      */
     public void dlFile() { // Parametros: Cliente FTP, la carpeta SIN el archivo, y el archivo
         if (selectedFolder != null)
-            this.selectedFolder = Client.getDirecSelec();
+            this.selectedFolder = MenuData.getDirecSelec();
         if (selectedFile != null)
-            this.selectedFile = Client.getFileSelec();
+            this.selectedFile = MenuData.getFileSelec();
 
         String directorio = this.selectedFolder;
         if (!this.selectedFolder.equals("/"))
             directorio = directorio + "/";
         if (!this.selectedFile.equals(""))
-            downloadFile(directorio + Client.getFileSelec(), Client.getFileSelec());
+            downloadFile(directorio + MenuData.getFileSelec(), MenuData.getFileSelec());
         else
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun archivo");
     }
@@ -79,7 +79,7 @@ public class DownloadFile implements ActionListener {
                 if (client.retrieveFile(NombreCompleto, out)) {
                     JOptionPane.showMessageDialog(null, nombreFichero
                             + " => Se ha descargado correctamente ...");
-                    new BDLogic().insertMove(Client.getUserId(), "Download", file.getName());
+                    new BDLogic().insertMove(MenuData.getUserId(), "Download", file.getName());
                 }
                 else
                     JOptionPane.showMessageDialog(null, nombreFichero
@@ -98,10 +98,10 @@ public class DownloadFile implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
+        if (MenuData.getFileSelec().contains(MenuData.getUser()) || MenuData.getUser().equals("admin")) {
             dlFile();
             try {
-                Client.fillList(Client.getClient().listFiles());
+                MenuData.fillList(MenuData.getClient().listFiles());
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

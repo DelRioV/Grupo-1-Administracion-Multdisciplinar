@@ -1,6 +1,6 @@
 package controlador;
+import modelo.MenuData;
 import modelo.Modelo;
-import vista.Client;
 import vista.UploadFilesAuxWindow;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -38,7 +38,7 @@ public class UploadEvent implements ActionListener {
             try{
                 File f = uploadFilesAuxWindow.getF().getSelectedFile();
                 new UploadFiles().upload(f.getAbsolutePath(),uploadFilesAuxWindow.getTextFields().get(1).getText());
-                Client.fic = f.getName();
+                MenuData.fic = f.getName();
                 uploadFilesAuxWindow.dispose();
                 JOptionPane.showMessageDialog(null,"Fichero subido correctamente");
             }catch (Exception er){
@@ -48,7 +48,7 @@ public class UploadEvent implements ActionListener {
 
         }
         try {
-            Client.fillList(Client.getClient().listFiles());
+            MenuData.fillList(MenuData.getClient().listFiles());
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

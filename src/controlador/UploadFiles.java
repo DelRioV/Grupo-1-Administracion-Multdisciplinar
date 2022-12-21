@@ -1,9 +1,8 @@
 package controlador;
 
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
-import vista.Client;
-
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,12 +20,12 @@ public class UploadFiles {
 
     public void upload(String path, String fileName) {
         try {
-            Client.getClient().changeWorkingDirectory(Client.getDirecSelec());
-            Client.getClient().setFileType(FTP.BINARY_FILE_TYPE);
+            MenuData.getClient().changeWorkingDirectory(MenuData.getDirecSelec());
+            MenuData.getClient().setFileType(FTP.BINARY_FILE_TYPE);
             BufferedInputStream in = new BufferedInputStream(
                     new FileInputStream(path));
-            Client.getClient().storeFile(Client.getUser() + "_" + fileName, in);
-            new BDLogic().insertMove(Client.getUserId(),"Upload",Client.fic);
+            MenuData.getClient().storeFile(MenuData.getUser() + "_" + fileName, in);
+            new BDLogic().insertMove(MenuData.getUserId(),"Upload",MenuData.fic);
             in.close(); //cerrar flujo
         } catch (IOException ioe) {
             ioe.printStackTrace();

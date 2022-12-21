@@ -1,6 +1,6 @@
 package controlador;
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTPClient;
-import vista.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,10 +47,10 @@ public class EventRename implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!Client.getFileSelec().equals("") && Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
+        if (!MenuData.getFileSelec().equals("") && MenuData.getFileSelec().contains(MenuData.getUser()) || MenuData.getUser().equals("admin")) {
             String newFileName = JOptionPane.showInputDialog("Nuevo nombre del fichero");
             RenameFiles.fic = newFileName;
-            new RenameFiles(client, Client.getUser() + "_" + newFileName).renameFile();
+            new RenameFiles(client, MenuData.getUser() + "_" + newFileName).renameFile();
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona un fichero antes");
         }

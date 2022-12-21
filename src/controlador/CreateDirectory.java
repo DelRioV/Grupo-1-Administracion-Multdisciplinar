@@ -1,8 +1,8 @@
 package controlador;
 
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-import vista.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,19 +43,19 @@ public class CreateDirectory implements ActionListener {
     public void creaDir() {
         String directoryName = JOptionPane.showInputDialog(null,
                 "Introduce el nombre del directorio", "carpeta");
-        System.out.println(Client.getDirecSelec());
+        System.out.println(MenuData.getDirecSelec());
         if (!(directoryName == null)) {
-            String directorio = Client.getDirecSelec();
-            if (!Client.getDirecSelec().equals("/")) directorio = directorio + "/";
+            String directorio = MenuData.getDirecSelec();
+            if (!MenuData.getDirecSelec().equals("/")) directorio = directorio + "/";
             //nombre del directorio a crear
-            directorio += Client.getUser() + "_" + directoryName.trim();//quita blancos a der e izd
-            System.out.println(Client.getDirecSelec());
+            directorio += MenuData.getUser() + "_" + directoryName.trim();//quita blancos a der e izd
+            System.out.println(MenuData.getDirecSelec());
             try {
-                if (Client.getClient().makeDirectory(directorio)) {
+                if (MenuData.getClient().makeDirectory(directorio)) {
                     String m = directoryName.trim() + " => Se ha creado correctamente ...";
                     JOptionPane.showMessageDialog(null, m);
                     field.setText(m);
-                    Client.getClient().changeWorkingDirectory(Client.getDirecSelec());
+                    MenuData.getClient().changeWorkingDirectory(MenuData.getDirecSelec());
                     FTPFile[] ff2 = null;
                     //obtener ficheros del directorio actual
                     ff2 = client.listFiles();
@@ -77,8 +77,8 @@ public class CreateDirectory implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         creaDir();
         try {
-            Client.fillList(Client.getClient().listFiles());
-            new BDLogic().insertMove(Client.getUserId(),"Create",fic);
+            MenuData.fillList(MenuData.getClient().listFiles());
+            new BDLogic().insertMove(MenuData.getUserId(),"Create",fic);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

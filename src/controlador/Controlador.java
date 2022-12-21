@@ -18,6 +18,9 @@ import java.sql.SQLException;
  * Class that inits the window app.
  */
 public class Controlador {
+
+    static LoginUI loginUI;
+
     /**
      * Empty Constructor
      */
@@ -29,8 +32,15 @@ public class Controlador {
      * Method that creates the loginWindow
      */
     public void init(){
-        LoginUI loginUI = new LoginUI();
+        loginUI = new LoginUI();
         loginUI.getLoginButton().addActionListener(new LoginEvent(loginUI));
     }
 
+    public static LoginUI getLoginUI() {
+        return loginUI;
+    }
+
+    public static void setLoginUI(LoginUI loginUI) {
+        Controlador.loginUI = loginUI;
+    }
 }

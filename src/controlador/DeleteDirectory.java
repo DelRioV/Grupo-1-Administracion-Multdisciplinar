@@ -1,8 +1,8 @@
 package controlador;
 
+import modelo.MenuData;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-import vista.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,18 +41,18 @@ public class DeleteDirectory implements ActionListener {
         String directoryName = JOptionPane.showInputDialog(null,
                 "Introduce el nombre del directorio a eliminar", "carpeta");
         if (!(directoryName == null)) {
-            String directory = Client.getDirecSelec();
-            if (!Client.getDirecSelec().equals("/"))
+            String directory = MenuData.getDirecSelec();
+            if (!MenuData.getDirecSelec().equals("/"))
                 directory = directory + "/";
             //nombre del directorio a eliminar
             directory += directoryName.trim();
             try {
                 if (client.removeDirectory(directory)) {
                     String message = directoryName.trim() + " => Se ha eliminado correctamente...";
-                    new BDLogic().insertMove(Client.getUserId(), "Delete", directory);
+                    new BDLogic().insertMove(MenuData.getUserId(), "Delete", directory);
                     JOptionPane.showMessageDialog(null, message);
                     field.setText(message);
-                    client.changeWorkingDirectory(Client.getDirecSelec());
+                    client.changeWorkingDirectory(MenuData.getDirecSelec());
                     FTPFile[] ff2 = null;
                     ff2 = client.listFiles();
                     //llenar la lista
@@ -75,7 +75,7 @@ public class DeleteDirectory implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         delDir();
         try {
-            Client.fillList(Client.getClient().listFiles());
+            MenuData.fillList(MenuData.getClient().listFiles());
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

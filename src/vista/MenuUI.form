@@ -20,7 +20,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="eb9cd" class="javax.swing.JButton" binding="btnSendMail">
+          <component id="eb9cd" class="javax.swing.JButton" binding="btnMail">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -37,7 +37,7 @@
               <verifyInputWhenFocusTarget value="true"/>
             </properties>
           </component>
-          <component id="61f3a" class="javax.swing.JButton" binding="btnMail">
+          <component id="61f3a" class="javax.swing.JButton" binding="btnSendMail">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>

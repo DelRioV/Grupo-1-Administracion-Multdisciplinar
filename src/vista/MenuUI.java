@@ -16,8 +16,8 @@ import java.util.List;
 
 public class MenuUI extends JFrame{
 
-    private JButton btnSendMail;
     private JButton btnMail;
+    private JButton btnSendMail;
     private JButton btnDelDir;
     private JButton btnCreateDir;
     private JButton btnDownload;

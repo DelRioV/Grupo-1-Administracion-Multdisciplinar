@@ -8,23 +8,45 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class contains information about inbox Window
+ */
 
 
 public class InboxWindow extends JFrame implements Windows {
 
+    //Model
     private Modelo model = new Modelo();
+    //Arraylist of buttons
     private ArrayList<JButton> buttons = new ArrayList<>();
+    //ArrayList of panels
     private ArrayList<JPanel> panels = new ArrayList<>();
-
+    //ArrayList of labels
     private ArrayList<JLabel> labels = new ArrayList<>();
+    //JTable
     private JTable table = new JTable();
+    //DefaultTableModel
     private DefaultTableModel tableModel = new DefaultTableModel();
 
+    /**
+     * Constructor
+     * @param windowsName -String the windows titlle
+     */
     public InboxWindow(String windowsName) {
         super(windowsName);
     }
 
+    /**
+     * Method that creates JButtons
+     * @param numButtons -int the number of buttons
+     */
     @Override
     public void createButtons(int numButtons) {
         JButton btn = null;
@@ -36,6 +58,11 @@ public class InboxWindow extends JFrame implements Windows {
                     BorderFactory.createLineBorder(model.bgColorInboxButton, 5)));
             buttons.add(btn);
     }
+
+    /**
+     * Method that creates panels
+     * @param numPanels -int the number of panels
+     */
     @Override
     public void createPanels(int numPanels) {
             JPanel panel = new JPanel();
@@ -43,9 +70,15 @@ public class InboxWindow extends JFrame implements Windows {
             panel.setBackground(model.bgColorInboxPanel);
             panels.add(panel);
     }
+    //Not implemented
     @Override
     public void createTextFields(int numTextFields) {
     }
+
+    /**
+     * Method that create labels
+     * @param numLabels -int number of labels
+     */
     @Override
     public void createLabels(int numLabels) {
         for (int i = 0; i < numLabels; i++){
@@ -56,12 +89,18 @@ public class InboxWindow extends JFrame implements Windows {
         }
 
     }
+    //Not implemented
     @Override
     public void createJComboBox(int numComboBoxes) {
     }
+    //Not implemented
     @Override
     public void createTextArea(int numTextArea) {
     }
+
+    /**
+     * Method that set the different properties of the window
+     */
     @Override
     public void setDifferentProperties() {
         this.setSize(model.windowsInboxWidth, model.windowsInboxHeight);
@@ -71,6 +110,10 @@ public class InboxWindow extends JFrame implements Windows {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    /**
+     * Method that creates a JTable
+     */
     public void createTable() {
         table.setFont(model.fontInboxJTable);
         tableModel.setColumnIdentifiers(model.getINBOXWINDOWTABLEHEADERS());
@@ -92,6 +135,7 @@ public class InboxWindow extends JFrame implements Windows {
 
 
     }
+    //Getters and Setters
     public ArrayList<JButton> getButtons(){
         return buttons;
     }

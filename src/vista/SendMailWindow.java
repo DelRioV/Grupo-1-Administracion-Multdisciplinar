@@ -1,15 +1,20 @@
 package vista;
-
-
 import modelo.Modelo;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
-
 import static javax.swing.BoxLayout.Y_AXIS;
-
+/**
+ * @author -Ismael Orellana Bello
+ *         -Pablo Salvador Del Río Vergara
+ *         -Ángel Acedo Moreno
+ *         -Javier Tienda
+ *         -Jorge Luis López
+ * @version 1.0
+ * @date 23/12/2022
+ * That class contains information about SendMailWindow
+ */
 public class SendMailWindow extends JFrame implements Windows {
 
     private Modelo model = new Modelo();

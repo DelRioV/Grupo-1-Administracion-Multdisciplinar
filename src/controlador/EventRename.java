@@ -14,7 +14,6 @@ public class EventRename implements ActionListener {
     private String user;
     private String pasw;
 
-
     public EventRename(FTPClient client, String server, String user, String pasw) {
         this.client = client;
         this.server = server;
@@ -27,6 +26,7 @@ public class EventRename implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (!Client.getFileSelec().equals("") && Client.getFileSelec().contains(Client.getUser()) || Client.getUser().equals("admin")) {
             String newFileName = JOptionPane.showInputDialog("Nuevo nombre del fichero");
+            RenameFiles.fic = newFileName;
             new RenameFiles(client, Client.getUser() + "_" + newFileName).renameFile();
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona un fichero antes");

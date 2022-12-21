@@ -5,6 +5,13 @@ import modelo.ConnectionDB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class BDLogic {
 
@@ -12,15 +19,7 @@ public class BDLogic {
         boolean condition = false;
         int counter = 0;
         Statement st = new ConnectionDB().getRemoteConnection();
-        String query = "";
-        System.out.println(username);
-        System.out.println(password);
-        if(username.contains("@")){
-            query = "Select Email from Users where Email = '"+username+"'";
-        }
-        else{
-            query = "Select Username from Users where Username = '"+username+"'";
-        }
+        String query = "Select Email from Users where Email = '"+username+"' or Username = '"+username+"'";
         String pass [] = getPass();
         boolean cond = false;
         for(int i = 0;i<pass.length;i++){
@@ -40,7 +39,13 @@ public class BDLogic {
         return condition;
     }
 
-    public void insertMove(String move){
+    public void insertMove(int idUser,String move,String fileName){
+        try {
+            boolean cond = new ConnectionDB().getRemoteConnection().execute("Insert into Movements (idUser,TypeOperation,OperationDate,FileName) values " +
+                    "('"+idUser+"','"+move+"','"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime())+"','"+fileName+"')");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

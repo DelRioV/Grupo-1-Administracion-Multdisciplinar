@@ -8,6 +8,7 @@ import java.io.IOException;
 public class RenameFiles {
     private FTPClient client;
     private String newName;
+    public static String fic = "";
 
     public RenameFiles(FTPClient client, String newName) {
         this.client = client;
@@ -20,6 +21,7 @@ public class RenameFiles {
                 client.changeWorkingDirectory(Client.getDirecSelec());
                 client.rename(Client.getFileSelec(), newName);
                 Client.fillList(Client.getClient().listFiles());
+                new BDLogic().insertMove(Client.getUserId(), "Rename", fic);
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

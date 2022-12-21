@@ -12,6 +12,8 @@ public class UploadFiles {
 
     private String servidor = "127.0.0.1"; //servidor
 
+
+
     public void upload(String path, String fileName) {
         try {
             Client.getClient().changeWorkingDirectory(Client.getDirecSelec());
@@ -19,8 +21,8 @@ public class UploadFiles {
             BufferedInputStream in = new BufferedInputStream(
                     new FileInputStream(path));
             Client.getClient().storeFile(Client.getUser() + "_" + fileName, in);
+            new BDLogic().insertMove(Client.getUserId(),"Upload",Client.fic);
             in.close(); //cerrar flujo
-
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

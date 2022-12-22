@@ -11,13 +11,13 @@ package modelo;
  */
 public class ConnectionData {
     //DataBase Name
-    private String DBNAME = "FTP_DB_Multidisciplinar";
+    private String DBNAME = "u542011410_proyectoMult";
     //Username of the account
-    private String USERNAME = "admin";
+    private String USERNAME = "u542011410_admin";
     //Password of the account
-    private String PASSWORD = "proyectomultidisciplinar";
+    private String PASSWORD = "O3I=0pw|";
     //The host Name of the data base
-    private String HOSTNAME = "dbusuarios.cl8kpkuf6i1i.us-east-1.rds.amazonaws.com";
+    private String HOSTNAME = "sql507.main-hosting.eu";
     //The port of the database
     private String PORT = "3306";
     //The driver of the dataBase

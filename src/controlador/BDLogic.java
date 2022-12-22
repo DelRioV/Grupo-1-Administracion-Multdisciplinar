@@ -95,7 +95,6 @@ public class BDLogic {
             while(counter<response.length){
                 rs.next();
                 response[counter++] = new Encrypt().decrypt(rs.getString(1));
-                System.out.println(response[counter-1]);
             }
         } catch (SQLException e) {
 

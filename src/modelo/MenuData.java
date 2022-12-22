@@ -288,8 +288,10 @@ public class MenuData {
         try {
             ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("select email from Users where Username not like 'Admin';");
             while (rs.next()){
-                mails += rs.getString(1);
+                mails += rs.getString(1) + ",";
             }
+            mails = mails.substring(0, mails.length()-1);
+            mails.charAt(mails.length());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

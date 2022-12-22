@@ -110,15 +110,12 @@ public class InboxWindowManager implements ActionListener {
             for(int j = 0; j < model.NUMMAILS; j++){
                 try {
                     EMail email = inbox.readMessage(myMessages[j]);
-                    //email.getPlainText();
                     inboxWindow.addRow(new Object[]{email.getMessage().getFrom()[0].toString(),email.getMessage().getSubject()});
                 }
-                catch (NullPointerException npe){
+                catch (Exception npe){
                 }
             }
         } catch (MessagingException ex) {
-            throw new RuntimeException(ex);
-        } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
         inboxWindow.setDifferentProperties();

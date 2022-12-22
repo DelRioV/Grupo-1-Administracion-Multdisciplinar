@@ -11,6 +11,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -279,6 +281,19 @@ public class MenuData {
 
     public static void setListFileDir(List<FTPFile> listFileDir) {
         MenuData.listFileDir = listFileDir;
+    }
+
+    public static String getAllMails(){
+        String mails = "";
+        try {
+            ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("select email from Users where Username not like 'Admin';");
+            while (rs.next()){
+                mails += rs.getString(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return mails;
     }
 
 }

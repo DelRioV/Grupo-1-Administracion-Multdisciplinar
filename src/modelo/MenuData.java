@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.Encrypt;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -37,10 +38,14 @@ public class MenuData {
 
     private static int userId;
     private static String userName;
+    private static String email;
+    private static String emailKey;
 
-    public MenuData(int userId, String userName) throws IOException{
+    public MenuData(int userId, String userName, String email, String emailKey) throws IOException{
         this.userId = userId;
         this.userName = userName;
+        this.email = email;
+        this.emailKey = new Encrypt().decrypt(emailKey);
         //para ver los comandos que se originan
         getClient().addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         getClient().connect(getServer()); //conexión al servidor
@@ -241,6 +246,22 @@ public class MenuData {
 
     public void setPasw(String pasw) {
         this.pasw = pasw;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        MenuData.email = email;
+    }
+
+    public static String getEmailKey() {
+        return emailKey;
+    }
+
+    public static void setEmailKey(String emailKey) {
+        MenuData.emailKey = emailKey;
     }
 
     public boolean isLogin() {

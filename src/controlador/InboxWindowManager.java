@@ -1,13 +1,19 @@
 package controlador;
 
+import modelo.EMail;
 import modelo.Modelo;
 import vista.InboxWindow;
 
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author -Ismael Orellana Bello
@@ -23,6 +29,7 @@ public class InboxWindowManager implements ActionListener {
 
     //Inbox window
     private InboxWindow inboxWindow = null;
+    private Inbox inbox = new Inbox("funcionario2ejemplo@gmail.com", "uawn ssot iujd peuu");
     //Modelo
     private Modelo model = new Modelo();
 
@@ -89,6 +96,22 @@ public class InboxWindowManager implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        try {
+            inbox.connect();
+            ArrayList<Folder> myFolder = inbox.listAllFolders();
+            for (int i = 0; i < myFolder.size(); i++){
+                Message[] myMessages = inbox.getMessagesInFolder(myFolder.get(i));
+                for(int j = 0; j < myMessages.length; j++){
+                    EMail email = inbox.readMessage(myMessages[j]);
+                    //email.getPlainText();
+                    System.out.println(email.getMessage().getSubject());
+                }
+            }
+        } catch (MessagingException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
         createWindow();
     }
 }

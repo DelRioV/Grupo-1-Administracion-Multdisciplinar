@@ -52,10 +52,10 @@ public class LoginEvent implements ActionListener {
         boolean cond = new BDLogic().getAccess(loginUI.getTxfUser().getText(),final_pass);
         if(cond){
             try {
-                ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser, Username from Users where Username = " +
+                ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser, Username, Email, SecretEmailKey from Users where Username = " +
                         "'"+loginUI.getTxfUser().getText()+"' or Email = '"+loginUI.getTxfUser().getText()+"'");
                 rs.first();
-                MenuData md = new MenuData(rs.getInt(1), rs.getString(2));
+                MenuData md = new MenuData(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 menuUI = new MenuUI();
                 menuUI.setDifferentProperties();
                 loginUI.setVisible(false);

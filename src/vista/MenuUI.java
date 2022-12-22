@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
-public class MenuUI extends JFrame implements ActionListener {
+public class MenuUI extends JFrame {
 
     private JButton btnMail;
     private JButton btnSendMail;

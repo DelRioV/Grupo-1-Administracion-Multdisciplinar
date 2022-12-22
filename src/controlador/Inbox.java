@@ -29,12 +29,11 @@ public class Inbox implements AutoCloseable {
   /**
    * Constructor
    *
-   * @param host -String
    * @param user -String
    * @param password -String
    */
-  public Inbox(String host, String user, String password) {
-    this.host = host;
+  public Inbox(String user, String password) {
+    this.host = HOST_GMAIL;
     this.user = user;
     this.password = password;
   }
@@ -125,7 +124,7 @@ public class Inbox implements AutoCloseable {
    * @throws MessagingException
    * @throws IOException
    */
-  private void saveContentsToMail(Multipart multipart, EMail mail) throws MessagingException, IOException {
+  public void saveContentsToMail(Multipart multipart, EMail mail) throws MessagingException, IOException {
     for (int i = 0; i < multipart.getCount(); i++) {
 
       BodyPart bodyPart = multipart.getBodyPart(i);

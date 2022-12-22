@@ -103,6 +103,7 @@ public class InboxWindow extends JFrame implements Windows {
      */
     @Override
     public void setDifferentProperties() {
+        this.setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
         this.setSize(model.windowsInboxWidth, model.windowsInboxHeight);
         this.setLayout(new BorderLayout());
         this.add(panels.get(0), BorderLayout.CENTER);
@@ -118,8 +119,6 @@ public class InboxWindow extends JFrame implements Windows {
     public void createTable() {
         table.setFont(model.fontInboxJTable);
         tableModel.setColumnIdentifiers(model.getINBOXWINDOWTABLEHEADERS());
-        tableModel.addRow(new Object[]{"", ""});
-        tableModel.addRow(new Object[]{"", ""});
         table.setModel(tableModel);
 
         TableColumnModel columnModel = table.getColumnModel();

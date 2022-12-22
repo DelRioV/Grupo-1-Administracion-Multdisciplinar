@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.EMail;
+import modelo.MenuData;
 import modelo.Modelo;
 import vista.InboxWindow;
 
@@ -26,10 +27,9 @@ import java.util.ArrayList;
  * Class that manage the inbox window
  */
 public class InboxWindowManager implements ActionListener {
-
     //Inbox window
     private InboxWindow inboxWindow = null;
-    private Inbox inbox = new Inbox("funcionario2ejemplo@gmail.com", "uawn ssot iujd peuu");
+    private Inbox inbox;
     //Modelo
     private Modelo model = new Modelo();
 
@@ -37,7 +37,7 @@ public class InboxWindowManager implements ActionListener {
      * Constructor
      */
     public InboxWindowManager() {
-
+        inbox  = new Inbox(MenuData.getEmail(), MenuData.getEmailKey());
     }
 
     /**
@@ -69,6 +69,12 @@ public class InboxWindowManager implements ActionListener {
         JPanel jpanel = new JPanel();
         jpanel.setBackground(model.bgColorInboxNorthSouthBorderLayout);
         jpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        inboxWindow.getButtons().get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inboxWindow.dispose();
+            }
+        });
         jpanel.add(inboxWindow.getButtons().get(0));
         inboxWindow.getPanels().get(0).add(jpanel, BorderLayout.SOUTH);
     }
@@ -96,15 +102,18 @@ public class InboxWindowManager implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        createWindow();
         try {
             inbox.connect();
             ArrayList<Folder> myFolder = inbox.listAllFolders();
-            for (int i = 0; i < myFolder.size(); i++){
-                Message[] myMessages = inbox.getMessagesInFolder(myFolder.get(i));
-                for(int j = 0; j < myMessages.length; j++){
+            Message[] myMessages = inbox.getMessagesInFolder(myFolder.get(0));
+            for(int j = 0; j < model.NUMMAILS; j++){
+                try {
                     EMail email = inbox.readMessage(myMessages[j]);
                     //email.getPlainText();
-                    System.out.println(email.getMessage().getSubject());
+                    inboxWindow.addRow(new Object[]{email.getMessage().getFrom()[0].toString(),email.getMessage().getSubject()});
+                }
+                catch (NullPointerException npe){
                 }
             }
         } catch (MessagingException ex) {
@@ -112,6 +121,6 @@ public class InboxWindowManager implements ActionListener {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        createWindow();
+        inboxWindow.setDifferentProperties();
     }
 }

@@ -36,6 +36,7 @@ public class Controlador {
     public void init(){
         loginUI = new LoginUI();
         loginUI.getLoginButton().addActionListener(new LoginEvent(loginUI));
+        loginUI.getPsf().addKeyListener(new LoginEvent(loginUI));
     }
 
     public static LoginUI getLoginUI() {

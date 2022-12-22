@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.Encrypt;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -10,6 +11,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,10 +40,15 @@ public class MenuData {
 
     private static int userId;
     private static String userName;
+    private static String email;
+    private static String emailKey;
 
-    public MenuData(int userId, String userName) throws IOException{
+    public MenuData(int userId, String userName, String email, String emailKey) throws IOException{
         this.userId = userId;
         this.userName = userName;
+        this.email = email;
+        //this.emailKey = new Encrypt().decrypt(emailKey);
+        this.emailKey = emailKey;
         //para ver los comandos que se originan
         getClient().addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         getClient().connect(getServer()); //conexión al servidor
@@ -243,6 +251,22 @@ public class MenuData {
         this.pasw = pasw;
     }
 
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        MenuData.email = email;
+    }
+
+    public static String getEmailKey() {
+        return emailKey;
+    }
+
+    public static void setEmailKey(String emailKey) {
+        MenuData.emailKey = emailKey;
+    }
+
     public boolean isLogin() {
         return login;
     }
@@ -258,6 +282,20 @@ public class MenuData {
 
     public static void setListFileDir(List<FTPFile> listFileDir) {
         MenuData.listFileDir = listFileDir;
+    }
+
+    public static String getAllMails(){
+        String mails = "";
+        try {
+            ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("select email from Users where Username not like 'Admin';");
+            while (rs.next()){
+                mails += rs.getString(1) + ",";
+            }
+            mails = mails.substring(0, mails.length()-1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return mails;
     }
 
 }

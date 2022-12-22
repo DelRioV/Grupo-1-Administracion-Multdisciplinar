@@ -15,9 +15,9 @@ public class Sender {
     private String authPort;
     private Session session = null;
 
-    public Sender(String host, String authPort) {
-        this.host = host;
-        this.authPort = authPort;
+    public Sender() {
+        this.host = HOST_GMAIL;
+        this.authPort = AUTH_PORT_GMAIL;
     }
 
     public void connect(String username, String password) {

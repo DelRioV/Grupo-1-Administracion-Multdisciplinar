@@ -10,13 +10,14 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
-public class MenuUI extends JFrame{
+public class MenuUI extends JFrame {
 
     private JButton btnMail;
     private JButton btnSendMail;
@@ -161,8 +162,18 @@ public class MenuUI extends JFrame{
                 }
             }
         });*/
-        btnMail.addActionListener(new InboxWindowManager());
-        btnSendMail.addActionListener(new SendMailWindowManager());
+        btnMail.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InboxWindowManager();
+            }
+        });
+        btnSendMail.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SendMailWindowManager();
+            }
+        });
         btnLogOut.addActionListener(new LogOutEvent());
         btnDelDir.addActionListener(new DeleteDirectory(MenuData.getClient(), field));
         btnCreateDir.addActionListener(new CreateDirectory(MenuData.getClient(), field));

@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+
 /**
  * @author -Ismael Orellana Bello
  * -Pablo Salvador Del Río Vergara
@@ -82,7 +84,12 @@ public class SendMailWindowManager implements ActionListener {
         sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(0), BorderLayout.WEST);
         sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(1), BorderLayout.EAST);
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getPanels().get(1));
-
         sendMailWindow.getButtons().get(1).addActionListener(this);
+        sendMailWindow.getButtons().get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sendMailWindow.dispose();
+            }
+        });
     }
 }

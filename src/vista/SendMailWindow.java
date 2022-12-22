@@ -82,6 +82,7 @@ public class SendMailWindow extends JFrame implements Windows {
 
     @Override
     public void setDifferentProperties() {
+        this.setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
         this.setSize(model.getSENDMAILWINDOWWIDTH(), model.getSENDMAILWINDOWHEIGTH());
         this.setLayout(new FlowLayout());
         this.add(panels.get(0));

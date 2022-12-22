@@ -162,12 +162,7 @@ public class MenuUI extends JFrame {
                 }
             }
         });*/
-        btnMail.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new InboxWindowManager();
-            }
-        });
+        btnMail.addActionListener(new InboxWindowManager());
         btnSendMail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

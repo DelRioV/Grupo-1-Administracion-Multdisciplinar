@@ -8,6 +8,8 @@ import vista.MenuUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +27,7 @@ import static controlador.Controlador.menuUI;
  * @date 23/12/2022
  * That class contains the event of the LoginUi button
  */
-public class LoginEvent implements ActionListener {
+public class LoginEvent implements ActionListener, KeyListener {
     //Login UI
     private LoginUI loginUI;
 
@@ -58,7 +60,7 @@ public class LoginEvent implements ActionListener {
                 MenuData md = new MenuData(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 menuUI = new MenuUI();
                 menuUI.setDifferentProperties();
-                loginUI.setVisible(false);
+                loginUI.dispose();
             } catch (Exception ex) {
 
             }
@@ -66,5 +68,40 @@ public class LoginEvent implements ActionListener {
         else{
             JOptionPane.showMessageDialog(null,"Contraseña incorrecta");
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()==KeyEvent.VK_ENTER){
+            char[] pass = loginUI.getPsf().getPassword();
+            String final_pass = "";
+            for (char x : pass) {
+                final_pass += x;
+            }
+            boolean cond = new BDLogic().getAccess(loginUI.getTxfUser().getText(),final_pass);
+            if(cond){
+                try {
+                    ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser, Username, Email, SecretEmailKey from Users where Username = " +
+                            "'"+loginUI.getTxfUser().getText()+"' or Email = '"+loginUI.getTxfUser().getText()+"'");
+                    rs.first();
+                    MenuData md = new MenuData(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                    menuUI = new MenuUI();
+                    menuUI.setDifferentProperties();
+                    loginUI.setVisible(false);
+                } catch (Exception ex) {
+
+                }
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

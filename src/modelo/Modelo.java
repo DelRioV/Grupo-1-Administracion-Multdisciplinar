@@ -113,18 +113,20 @@ public class Modelo {
             INBOXWINDOWJBUTTON = 1,
             INBOXWINDOWJPANEL = 1;
 
-    private static final String[] INBOXWINDOWJBUTTONTXT = {"Volver"}, INBOXLBLTEXT = {"prueba@prueba.com"}, INBOXWINDOWTABLEHEADERS = {"Usuario", "Mensaje"};
+    private static final String[] INBOXWINDOWJBUTTONTXT = {"Volver"}, INBOXLBLTEXT = {MenuData.getEmail()}, INBOXWINDOWTABLEHEADERS = {"Usuario", "Mensaje"};
 
     private static final String INBOXWINDOWNAME = "Buzon de correo";
 
-    public static Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 23);
+    public static Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 11);
     public static Color bgColorInboxJTable = new Color(245, 240, 198);
     public static Color bgColorInboxPanel = new Color(223, 236, 243);
     public static Color bgColorInboxNorthSouthBorderLayout = new Color(174, 214, 241);
     public static Color bgColorInboxButton = new Color(223, 236, 243);
     public static Color bgColorInboxButtonBorder = new Color(0, 162, 253);
 
-    public static final int windowsInboxWidth = 500, windowsInboxHeight = 500;
+    public static final int windowsInboxWidth = 700, windowsInboxHeight = 500;
+
+    public static final int NUMMAILS = 10;
 
     public static String getINBOXWINDOWNAME() {
         return INBOXWINDOWNAME;

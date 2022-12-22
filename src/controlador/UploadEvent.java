@@ -36,13 +36,17 @@ public class UploadEvent implements ActionListener {
         }
         else{
             try{
-                File f = uploadFilesAuxWindow.getF().getSelectedFile();
-                new UploadFiles().upload(f.getAbsolutePath(),uploadFilesAuxWindow.getTextFields().get(1).getText());
-                MenuData.fic = f.getName();
-                uploadFilesAuxWindow.dispose();
-                JOptionPane.showMessageDialog(null,"Fichero subido correctamente");
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //solo se pueden seleccionar directorios
+                fileChooser.setDialogTitle("Selecciona el Directorio donde DESCARGAR el fichero"); //titulo de la ventana
+                int returnVal = fileChooser.showDialog(null, "Subir");
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    String name = JOptionPane.showInputDialog("Introduce el nombre del fichero que quieres subir");
+                    new UploadFiles().upload(fileChooser.getSelectedFile().getAbsolutePath(), name);
+                    MenuData.fic = name;
+                    JOptionPane.showMessageDialog(null, "Fichero subido correctamente");
+                }
             }catch (Exception er){
-                uploadFilesAuxWindow.dispose();
                 JOptionPane.showMessageDialog(null,"Los parámetros introducidos son incorrectos");
             }
 

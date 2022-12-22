@@ -47,7 +47,8 @@ public class MenuData {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
-        this.emailKey = new Encrypt().decrypt(emailKey);
+        //this.emailKey = new Encrypt().decrypt(emailKey);
+        this.emailKey = emailKey;
         //para ver los comandos que se originan
         getClient().addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         getClient().connect(getServer()); //conexión al servidor
@@ -291,7 +292,6 @@ public class MenuData {
                 mails += rs.getString(1) + ",";
             }
             mails = mails.substring(0, mails.length()-1);
-            mails.charAt(mails.length());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

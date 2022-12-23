@@ -43,7 +43,7 @@ public class MenuData {
     private static String email;
     private static String emailKey;
 
-    public MenuData(int userId, String userName, String email, String emailKey) throws IOException{
+    public MenuData(int userId, String userName, String email, String emailKey) throws IOException {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
@@ -186,16 +186,8 @@ public class MenuData {
         return listDirec;
     }
 
-    public static void setListDirec(JList listDirec) {
-        MenuData.listDirec = listDirec;
-    }
-
     public static FTPClient getClient() {
         return client;
-    }
-
-    public static void setClient(FTPClient client) {
-        MenuData.client = client;
     }
 
     public static String getDirecSelec() {
@@ -214,40 +206,20 @@ public class MenuData {
         MenuData.fileSelec = fileSelec;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public static String getServer() {
         return server;
-    }
-
-    public void setServer(String server) {
-        this.server = server;
     }
 
     public static String getUser() {
         return user;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     public static String getUserName() {
         return userName;
     }
 
-    public void setUserName(String user) {
-        this.user = userName;
-    }
-
     public static String getPasw() {
         return pasw;
-    }
-
-    public void setPasw(String pasw) {
-        this.pasw = pasw;
     }
 
     public static String getEmail() {
@@ -260,14 +232,6 @@ public class MenuData {
 
     public static String getEmailKey() {
         return emailKey;
-    }
-
-    public static void setEmailKey(String emailKey) {
-        MenuData.emailKey = emailKey;
-    }
-
-    public boolean isLogin() {
-        return login;
     }
 
     public void setLogin(boolean login) {
@@ -283,21 +247,21 @@ public class MenuData {
         MenuData.listFileDir = listFileDir;
     }
 
-    public static String getAllMails(){
+    public static String getAllMails() {
         String mails = "";
         try {
             ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("select email from Users where Username not like 'Admin';");
-            while (rs.next()){
+            while (rs.next()) {
                 mails += rs.getString(1) + ",";
             }
-            mails = mails.substring(0, mails.length()-1);
+            mails = mails.substring(0, mails.length() - 1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return mails;
     }
 
-    public static String getAdminMail(){
+    public static String getAdminMail() {
         try {
             ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("select email from Users where Username like 'Admin';");
             rs.first();

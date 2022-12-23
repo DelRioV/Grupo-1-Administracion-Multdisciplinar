@@ -44,12 +44,4 @@ public class Controlador {
         });
         loginUI.getPsf().addKeyListener(new LoginEvent(loginUI));
     }
-
-    public static LoginUI getLoginUI() {
-        return loginUI;
-    }
-
-    public static void setLoginUI(LoginUI loginUI) {
-        Controlador.loginUI = loginUI;
-    }
 }

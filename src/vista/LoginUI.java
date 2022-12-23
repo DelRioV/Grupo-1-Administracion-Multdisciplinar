@@ -3,7 +3,7 @@ package vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginUI extends JFrame{
+public class LoginUI extends JFrame {
     private JPanel Login;
     private JTextField txfUser;
     private JPasswordField psf;
@@ -11,7 +11,7 @@ public class LoginUI extends JFrame{
     private JButton forgotPasswordButton;
     private JPanel loginPanel;
 
-    public LoginUI(){
+    public LoginUI() {
         super("Login");
         setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
         setContentPane(loginPanel);
@@ -40,9 +40,5 @@ public class LoginUI extends JFrame{
 
     public JButton getForgotPasswordButton() {
         return forgotPasswordButton;
-    }
-
-    public JPanel getLoginPanel() {
-        return loginPanel;
     }
 }

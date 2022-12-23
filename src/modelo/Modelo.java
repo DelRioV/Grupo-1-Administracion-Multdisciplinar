@@ -1,12 +1,14 @@
 package modelo;
+
 import java.awt.*;
+
 /**
  * @author -Ismael Orellana Bello
- *         -Pablo Salvador Del Río Vergara
- *         -Ángel Acedo Moreno
- *         -Javier Tienda
- *         -Jorge Luis López
- *         -José Ramón Gallego
+ * -Pablo Salvador Del Río Vergara
+ * -Ángel Acedo Moreno
+ * -Javier Tienda
+ * -Jorge Luis López
+ * -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains information about all the project Information
@@ -85,10 +87,9 @@ public class Modelo {
 
     public static Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 11);
     public static Color bgColorInboxJTable = new Color(174, 214, 241);
-    public static Color bgColorInboxPanel = new Color(45,45,45);
-    public static Color bgColorInboxNorthSouthBorderLayout = new Color(12,15,65);
+    public static Color bgColorInboxPanel = new Color(45, 45, 45);
+    public static Color bgColorInboxNorthSouthBorderLayout = new Color(12, 15, 65);
     public static Color bgColorInboxButton = new Color(223, 236, 243);
-    public static Color bgColorInboxButtonBorder = new Color(0, 162, 253);
 
     public static final int windowsInboxWidth = 700, windowsInboxHeight = 500;
 
@@ -106,21 +107,13 @@ public class Modelo {
         return INBOXWINDOWNUMBUTTONS;
     }
 
-
     public static int getINBOXWINDOWJTABLE() {
         return INBOXWINDOWJTABLE;
     }
 
-
-    public static int getINBOXWINDOWJBUTTON() {
-        return INBOXWINDOWJBUTTON;
-    }
-
-
     public static String[] getINBOXWINDOWJBUTTONTXT() {
         return INBOXWINDOWJBUTTONTXT;
     }
-
 
     public static String[] getINBOXWINDOWJLABELTXT() {
         return INBOXWINDOWJLABELTXT;

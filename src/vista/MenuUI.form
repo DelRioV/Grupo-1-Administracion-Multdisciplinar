@@ -153,8 +153,12 @@
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <label value="DeleteFiles"/>
-                  <text value="DeleteFiles"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <icon value="modelo/resources/delete-file-4041_fZMrxSSRR.png"/>
+                  <label value=""/>
+                  <text value=""/>
+                  <toolTipText value="Delete File"/>
                 </properties>
               </component>
               <component id="244ef" class="javax.swing.JButton" binding="btnRenameFile">
@@ -162,9 +166,13 @@
                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
                   <horizontalTextPosition value="11"/>
-                  <label value="Rename"/>
-                  <text value="Rename"/>
+                  <icon value="modelo/resources/edit-document-4070_Bi9QMjAiB.png"/>
+                  <label value=""/>
+                  <text value=""/>
+                  <toolTipText value="Rename File"/>
                 </properties>
               </component>
               <component id="eada0" class="javax.swing.JButton" binding="btnUpload">
@@ -172,8 +180,12 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <label value="Upload"/>
-                  <text value="Upload"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <icon value="modelo/resources/open-file-4039_qDZQmAfaG.png"/>
+                  <label value=""/>
+                  <text value=""/>
+                  <toolTipText value="Upload File"/>
                 </properties>
               </component>
               <component id="1d9d7" class="javax.swing.JButton" binding="btnDownload">
@@ -181,7 +193,11 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Download"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <icon value="modelo/resources/download-file-4038_CE23jQCwS.png"/>
+                  <text value=""/>
+                  <toolTipText value="Download File"/>
                 </properties>
               </component>
               <component id="31ad" class="javax.swing.JButton" binding="btnCreateDir">
@@ -189,8 +205,12 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <label value="Create"/>
-                  <text value="Create"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <icon value="modelo/resources/new-archive-4125_YZt6oyVmt.png"/>
+                  <label value=""/>
+                  <text value=""/>
+                  <toolTipText value="Create Folder"/>
                 </properties>
               </component>
               <component id="442db" class="javax.swing.JButton" binding="btnDelDir">
@@ -198,7 +218,11 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Delete"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <icon value="modelo/resources/remove-archive-4126_ASL_HZXHy.png"/>
+                  <text value=""/>
+                  <toolTipText value="Delete Folder"/>
                 </properties>
               </component>
             </children>

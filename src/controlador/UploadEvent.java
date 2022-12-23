@@ -20,7 +20,6 @@ import java.io.IOException;
 public class UploadEvent implements ActionListener {
 
     //The window
-    private UploadFilesAuxWindow uploadFilesAuxWindow = null;
     //Modelo
     private Modelo model = new Modelo();
 
@@ -30,48 +29,26 @@ public class UploadEvent implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("Subir fichero")){
-            uploadFilesAuxWindow=new UploadFilesAuxWindow("hola");
-            addComponents();
-        }
-        else{
-            try{
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //solo se pueden seleccionar directorios
-                fileChooser.setDialogTitle("Selecciona el Directorio donde DESCARGAR el fichero"); //titulo de la ventana
-                int returnVal = fileChooser.showDialog(null, "Subir");
-                if (returnVal == JFileChooser.APPROVE_OPTION) {
-                    String name = JOptionPane.showInputDialog("Introduce el nombre del fichero que quieres subir");
-                    new UploadFiles().upload(fileChooser.getSelectedFile().getAbsolutePath(), name);
-                    MenuData.fic = name;
-                    JOptionPane.showMessageDialog(null, "Fichero subido correctamente");
-                }
-            }catch (Exception er){
-                JOptionPane.showMessageDialog(null,"Los parámetros introducidos son incorrectos");
+        try {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //solo se pueden seleccionar directorios
+            fileChooser.setDialogTitle("Selecciona el Directorio donde DESCARGAR el fichero"); //titulo de la ventana
+            int returnVal = fileChooser.showDialog(null, "Subir");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                String name = JOptionPane.showInputDialog("Introduce el nombre del fichero que quieres subir");
+                new UploadFiles().upload(fileChooser.getSelectedFile().getAbsolutePath(), name);
+                MenuData.fic = name;
+                JOptionPane.showMessageDialog(null, "Fichero subido correctamente");
             }
-
+        } catch (Exception er) {
+            JOptionPane.showMessageDialog(null, "Los parámetros introducidos son incorrectos");
         }
         try {
             MenuData.fillList(MenuData.getClient().listFiles());
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+
     }
 
-    /**
-     * Method that add the components to the window
-     */
-    private void addComponents() {
-        uploadFilesAuxWindow.createButtons(model.getLoginwindownumbotones());
-        uploadFilesAuxWindow.getButtons().get(0).addActionListener(this);
-        uploadFilesAuxWindow.createLabels(model.getLoginwindownumlabels());
-        uploadFilesAuxWindow.createPanels(model.getLoginwindownumpanels());
-        uploadFilesAuxWindow.createTextFields(model.getLoginwindownumtextfields());
-        uploadFilesAuxWindow.createJFileChooser();
-        uploadFilesAuxWindow.getPanels().get(0).add(uploadFilesAuxWindow.getF());
-        uploadFilesAuxWindow.getPanels().get(0).add(uploadFilesAuxWindow.getLabels().get(1));
-        uploadFilesAuxWindow.getPanels().get(0).add(uploadFilesAuxWindow.getTextFields().get(1));
-        uploadFilesAuxWindow.getPanels().get(0).add(uploadFilesAuxWindow.getButtons().get(0));
-        uploadFilesAuxWindow.setDifferentProperties();
-    }
 }

@@ -297,4 +297,15 @@ public class MenuData {
         return mails;
     }
 
+    public static String getAdminMail(){
+        try {
+            ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("select email from Users where Username like 'Admin';");
+            rs.first();
+            return rs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }

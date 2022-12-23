@@ -52,11 +52,10 @@ public class SendMailWindowManager implements ActionListener {
             sender.connect(MenuData.getEmail(), MenuData.getEmailKey());
             myMail = sender.createNewMail();
             sender.setFrom(myMail, MenuData.getEmail());
-            if (MenuData.getEmail().equals("multidisciplinarcentral@gmail.com")) {
+            if (MenuData.getEmail().equals(MenuData.getAdminMail())) {
                 sender.setRecipients(myMail, MenuData.getAllMails());
-                System.out.println(MenuData.getAllMails());
             } else {
-                sender.setRecipients(myMail, "multidisciplinarcentral@gmail.com");
+                sender.setRecipients(myMail, MenuData.getAdminMail());
             }
             sender.setSubject(myMail, sendMailWindow.getTextFields().get(0).getText());
             sender.addBody(myMail, sendMailWindow.getTextAreas().get(0).getText());

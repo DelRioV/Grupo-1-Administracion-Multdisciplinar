@@ -1,6 +1,11 @@
 package controlador;
+import modelo.MenuData;
 import vista.LoginUI;
 import vista.MenuUI;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author -Ismael Orellana Bello
@@ -31,6 +36,12 @@ public class Controlador {
     public void init(){
         loginUI = new LoginUI();
         loginUI.getLoginButton().addActionListener(new LoginEvent(loginUI));
+        loginUI.getForgotPasswordButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"Contacta con el administrador\n" + MenuData.getAdminMail());
+            }
+        });
         loginUI.getPsf().addKeyListener(new LoginEvent(loginUI));
     }
 

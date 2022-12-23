@@ -8,10 +8,13 @@ import vista.SendMailWindow;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.swing.*;
+import javax.swing.plaf.FileChooserUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -35,6 +38,7 @@ public class SendMailWindowManager implements ActionListener {
     //Mail Sender
     private Sender sender = new Sender();
 
+    private ArrayList<File> filesSelected = new ArrayList<>();
     private Message myMail;
 
     public SendMailWindowManager() {
@@ -58,6 +62,11 @@ public class SendMailWindowManager implements ActionListener {
                 sender.setRecipients(myMail, MenuData.getAdminMail());
             }
             sender.setSubject(myMail, sendMailWindow.getTextFields().get(0).getText());
+            if(filesSelected.size() != 0) {
+                for (int i = 0; i < filesSelected.size(); i++) {
+                    sender.addAttachment(myMail, filesSelected.get(i));
+                }
+            }
             sender.addBody(myMail, sendMailWindow.getTextAreas().get(0).getText());
             sender.sendMail(myMail);
             JOptionPane.showMessageDialog(null, "Mensaje enviado correctamente");
@@ -83,12 +92,27 @@ public class SendMailWindowManager implements ActionListener {
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getTextAreas().get(0));
         sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(0), BorderLayout.WEST);
         sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(1), BorderLayout.EAST);
+        sendMailWindow.getPanels().get(1).add(sendMailWindow.getButtons().get(2), BorderLayout.CENTER);
         sendMailWindow.getPanels().get(0).add(sendMailWindow.getPanels().get(1));
-        sendMailWindow.getButtons().get(1).addActionListener(this);
+
         sendMailWindow.getButtons().get(0).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sendMailWindow.dispose();
+            }
+        });
+        sendMailWindow.getButtons().get(1).addActionListener(this);
+        sendMailWindow.getButtons().get(2).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);  //solo se pueden seleccionar directorios
+                fileChooser.setDialogTitle("Selecciona el Directorio donde DESCARGAR el fichero"); //titulo de la ventana
+                int returnVal = fileChooser.showDialog(null, "Subir");
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    filesSelected.add(new File(fileChooser.getSelectedFile().getAbsolutePath()));
+                    sendMailWindow.getButtons().get(2).setText(sendMailWindow.getButtons().get(2).getText().substring(0,sendMailWindow.getButtons().get(2).getText().length()-1) + filesSelected.size());
+                }
             }
         });
     }

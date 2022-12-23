@@ -64,6 +64,7 @@ public class SendMailWindow extends JFrame implements Windows {
     public void createLabels(int numLabels) {
         for (int i = 0; i < numLabels; i++) {
             labels.add(new JLabel(model.getSENDMAILWINDOWLABELTXT()[i]));
+            labels.get(i).setForeground(Color.white);
         }
     }
 
@@ -83,6 +84,9 @@ public class SendMailWindow extends JFrame implements Windows {
 
     @Override
     public void setDifferentProperties() {
+        this.getContentPane().setBackground(new Color(42,42,42));
+        this.panels.get(0).setBackground(new Color(12,15,65));
+        this.panels.get(1).setBackground(new Color(12,15,65));
         this.setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
         this.setSize(model.getSENDMAILWINDOWWIDTH(), model.getSENDMAILWINDOWHEIGTH());
         this.setLayout(new FlowLayout());

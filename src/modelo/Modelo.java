@@ -119,9 +119,9 @@ public class Modelo {
     private static final String INBOXWINDOWNAME = "Buzon de correo";
 
     public static Font fontInboxJTable = new Font("Consolas", Font.PLAIN, 11);
-    public static Color bgColorInboxJTable = new Color(245, 240, 198);
-    public static Color bgColorInboxPanel = new Color(223, 236, 243);
-    public static Color bgColorInboxNorthSouthBorderLayout = new Color(174, 214, 241);
+    public static Color bgColorInboxJTable = new Color(174, 214, 241);
+    public static Color bgColorInboxPanel = new Color(45,45,45);
+    public static Color bgColorInboxNorthSouthBorderLayout = new Color(12,15,65);
     public static Color bgColorInboxButton = new Color(223, 236, 243);
     public static Color bgColorInboxButtonBorder = new Color(0, 162, 253);
 

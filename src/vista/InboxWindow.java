@@ -54,9 +54,9 @@ public class InboxWindow extends JFrame implements Windows {
         for (int i = 0; i < numButtons; i++)
             btn = new JButton(model.getINBOXWINDOWJBUTTONTXT()[i]);
             btn.setBackground(model.bgColorInboxButton);
-            btn.setBorder(BorderFactory.createCompoundBorder(
+            /*btn.setBorder(BorderFactory.createCompoundBorder(
                     BorderFactory.createLineBorder(model.bgColorInboxButtonBorder, 3),
-                    BorderFactory.createLineBorder(model.bgColorInboxButton, 5)));
+                    BorderFactory.createLineBorder(model.bgColorInboxButton, 5)));*/
             buttons.add(btn);
     }
 
@@ -85,6 +85,7 @@ public class InboxWindow extends JFrame implements Windows {
         for (int i = 0; i < numLabels; i++){
             JLabel label = new JLabel(model.getINBOXLBLTEXT()[i]);
             label.setFont(new Font("Consolas", Font.PLAIN, 16));
+            label.setForeground(Color.white);
             label.setHorizontalAlignment(JLabel.CENTER);
             labels.add(label);
         }

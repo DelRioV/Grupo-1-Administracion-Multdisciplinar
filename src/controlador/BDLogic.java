@@ -49,7 +49,6 @@ public class BDLogic {
                     i = pass.length;
                 }
             }catch (NullPointerException npe){
-                JOptionPane.showMessageDialog(null, "Contraseña o usuarios erroneos");
             }
         }
         try {

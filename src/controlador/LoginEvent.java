@@ -47,6 +47,22 @@ public class LoginEvent implements ActionListener, KeyListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        loginMethod();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()==KeyEvent.VK_ENTER){
+            loginMethod();
+        }
+    }
+
+    private void loginMethod() {
         char[] pass = loginUI.getPsf().getPassword();
         String final_pass = "";
         for (char x : pass) {
@@ -61,43 +77,13 @@ public class LoginEvent implements ActionListener, KeyListener {
                 MenuData md = new MenuData(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 menuUI = new MenuUI();
                 menuUI.setDifferentProperties();
-                loginUI.dispose();
+                loginUI.setVisible(false);
             } catch (Exception ex) {
 
             }
         }
         else{
-            JOptionPane.showMessageDialog(null,"Contraseña incorrecta");
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode()==KeyEvent.VK_ENTER){
-            char[] pass = loginUI.getPsf().getPassword();
-            String final_pass = "";
-            for (char x : pass) {
-                final_pass += x;
-            }
-            boolean cond = new BDLogic().getAccess(loginUI.getTxfUser().getText(),final_pass);
-            if(cond){
-                try {
-                    ResultSet rs = new ConnectionDB().getRemoteConnection().executeQuery("Select idUser, Username, Email, SecretEmailKey from Users where Username = " +
-                            "'"+loginUI.getTxfUser().getText()+"' or Email = '"+loginUI.getTxfUser().getText()+"'");
-                    rs.first();
-                    MenuData md = new MenuData(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
-                    menuUI = new MenuUI();
-                    menuUI.setDifferentProperties();
-                    loginUI.setVisible(false);
-                } catch (Exception ex) {
-
-                }
-            }
+            JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecta");
         }
     }
 

@@ -15,14 +15,6 @@ public class Modelo {
 
     // A lot of constants and Getter and Setters
 
-    private final static String LOGINWINDOWNAME = "Ventana de inicio de sesión";
-    private final static int LOGINWINDOWNUMBOTONES = 1;
-    private final static int LOGINWINDOWNUMPANELS = 1;
-    private final static int LOGINWINDOWNUMTEXTFIELDS = 2;
-    private final static int LOGINWINDOWNUMLABELS = 2;
-    private final static String[] LOGINWINDOWLABELSNAMES = {"Nombre de usuario", "Contraseña"};
-    private final static String LOGINWINDOWBUTTONSAME = "Iniciar sesión";
-
     private final static int LENGTHTEXTFIELDS = 20;
 
     private final static String SENDMAILWINDOWNAME = "Enviar correo electrónico";
@@ -40,33 +32,6 @@ public class Modelo {
         return LENGTHTEXTFIELDS;
     }
 
-    public String getLoginwindowname() {
-        return LOGINWINDOWNAME;
-    }
-
-    public int getLoginwindownumbotones() {
-        return LOGINWINDOWNUMBOTONES;
-    }
-
-    public int getLoginwindownumpanels() {
-        return LOGINWINDOWNUMPANELS;
-    }
-
-    public int getLoginwindownumtextfields() {
-        return LOGINWINDOWNUMTEXTFIELDS;
-    }
-
-    public int getLoginwindownumlabels() {
-        return LOGINWINDOWNUMLABELS;
-    }
-
-    public String[] getLoginwindowlabelsnames() {
-        return LOGINWINDOWLABELSNAMES;
-    }
-
-    public String getLoginwindowbuttonsame() {
-        return LOGINWINDOWBUTTONSAME;
-    }
 
     public static String getSENDMAILWINDOWNAME() {
         return SENDMAILWINDOWNAME;

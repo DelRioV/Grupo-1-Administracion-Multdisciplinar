@@ -49,6 +49,7 @@ public class SendMailWindow extends JFrame implements Windows {
                     panel.setLayout(new BorderLayout(20,20));
                     panel.setBorder(new EmptyBorder(10,0,0,0));
                     panels.add(panel);
+                    break;
             }
         }
     }

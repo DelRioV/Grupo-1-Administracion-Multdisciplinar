@@ -111,7 +111,7 @@ public class SendMailWindowManager implements ActionListener {
                 int returnVal = fileChooser.showDialog(null, "Subir");
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     filesSelected.add(new File(fileChooser.getSelectedFile().getAbsolutePath()));
-                    sendMailWindow.getButtons().get(2).setText(sendMailWindow.getButtons().get(2).getText().substring(0,sendMailWindow.getButtons().get(2).getText().length()-1) + filesSelected.size());
+                    sendMailWindow.getButtons().get(2).setText("(Adjuntos)" + + filesSelected.size());
                 }
             }
         });

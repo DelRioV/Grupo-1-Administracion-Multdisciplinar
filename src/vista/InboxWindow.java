@@ -8,13 +8,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.util.ArrayList;
+
 /**
  * @author -Ismael Orellana Bello
- *         -Pablo Salvador Del Río Vergara
- *         -Ángel Acedo Moreno
- *         -Javier Tienda
- *         -Jorge Luis López
- *         -José Ramón Gallego
+ * -Pablo Salvador Del Río Vergara
+ * -Ángel Acedo Moreno
+ * -Javier Tienda
+ * -Jorge Luis López
+ * -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains information about inbox Window
@@ -38,6 +39,7 @@ public class InboxWindow extends JFrame implements Windows {
 
     /**
      * Constructor
+     *
      * @param windowsName -String the windows titlle
      */
     public InboxWindow(String windowsName) {
@@ -46,6 +48,7 @@ public class InboxWindow extends JFrame implements Windows {
 
     /**
      * Method that creates JButtons
+     *
      * @param numButtons -int the number of buttons
      */
     @Override
@@ -53,24 +56,26 @@ public class InboxWindow extends JFrame implements Windows {
         JButton btn = null;
         for (int i = 0; i < numButtons; i++)
             btn = new JButton(model.getINBOXWINDOWJBUTTONTXT()[i]);
-            btn.setBackground(model.bgColorInboxButton);
+        btn.setBackground(model.bgColorInboxButton);
             /*btn.setBorder(BorderFactory.createCompoundBorder(
                     BorderFactory.createLineBorder(model.bgColorInboxButtonBorder, 3),
                     BorderFactory.createLineBorder(model.bgColorInboxButton, 5)));*/
-            buttons.add(btn);
+        buttons.add(btn);
     }
 
     /**
      * Method that creates panels
+     *
      * @param numPanels -int the number of panels
      */
     @Override
     public void createPanels(int numPanels) {
-            JPanel panel = new JPanel();
-            panel.setLayout(new BorderLayout(100,100));
-            panel.setBackground(model.bgColorInboxPanel);
-            panels.add(panel);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout(100, 100));
+        panel.setBackground(model.bgColorInboxPanel);
+        panels.add(panel);
     }
+
     //Not implemented
     @Override
     public void createTextFields(int numTextFields) {
@@ -78,11 +83,12 @@ public class InboxWindow extends JFrame implements Windows {
 
     /**
      * Method that create labels
+     *
      * @param numLabels -int number of labels
      */
     @Override
     public void createLabels(int numLabels) {
-        for (int i = 0; i < numLabels; i++){
+        for (int i = 0; i < numLabels; i++) {
             JLabel label = new JLabel(model.getINBOXLBLTEXT()[i]);
             label.setFont(new Font("Consolas", Font.PLAIN, 16));
             label.setForeground(Color.white);
@@ -91,10 +97,12 @@ public class InboxWindow extends JFrame implements Windows {
         }
 
     }
+
     //Not implemented
     @Override
     public void createJComboBox(int numComboBoxes) {
     }
+
     //Not implemented
     @Override
     public void createTextArea(int numTextArea) {
@@ -124,10 +132,10 @@ public class InboxWindow extends JFrame implements Windows {
         table.setModel(tableModel);
 
         TableColumnModel columnModel = table.getColumnModel();
-        columnModel.getColumn(0).setMaxWidth(model.windowsInboxWidth /3);
-        columnModel.getColumn(0).setMinWidth(model.windowsInboxWidth /3);
-        columnModel.getColumn(1).setMaxWidth(model.windowsInboxWidth - (model.windowsInboxWidth /3));
-        columnModel.getColumn(1).setMinWidth(model.windowsInboxWidth - (model.windowsInboxWidth /3));
+        columnModel.getColumn(0).setMaxWidth(model.windowsInboxWidth / 3);
+        columnModel.getColumn(0).setMinWidth(model.windowsInboxWidth / 3);
+        columnModel.getColumn(1).setMaxWidth(model.windowsInboxWidth - (model.windowsInboxWidth / 3));
+        columnModel.getColumn(1).setMinWidth(model.windowsInboxWidth - (model.windowsInboxWidth / 3));
 
         table.setBackground(model.bgColorInboxJTable);
 
@@ -137,35 +145,42 @@ public class InboxWindow extends JFrame implements Windows {
 
 
     }
+
     //Getters and Setters
-    public ArrayList<JButton> getButtons(){
+    public ArrayList<JButton> getButtons() {
         return buttons;
     }
+
     public ArrayList<JPanel> getPanels() {
         return panels;
     }
+
     public JTable getTable() {
         return table;
     }
+
     public ArrayList<JLabel> getLabels() {
         return labels;
     }
+
     public void setTableContent(Object[][] tableContent) {
         tableModel = new DefaultTableModel(tableContent, model.getINBOXWINDOWTABLEHEADERS());
         table.setModel(tableModel);
     }
+
     public void addRow(Object[] row) {
         tableModel.addRow(row);
         table.setModel(tableModel);
     }
+
     public void removeRow(int i) {
         tableModel.removeRow(i);
         table.setModel(tableModel);
     }
+
     public Object searchValue(int row, int column) {
         return tableModel.getValueAt(row, column);
     }
-
 
 
 }

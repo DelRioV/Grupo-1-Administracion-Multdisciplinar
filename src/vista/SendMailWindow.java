@@ -1,17 +1,21 @@
 package vista;
+
 import modelo.Modelo;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+
 import static javax.swing.BoxLayout.Y_AXIS;
+
 /**
  * @author -Ismael Orellana Bello
- *         -Pablo Salvador Del Río Vergara
- *         -Ángel Acedo Moreno
- *         -Javier Tienda
- *         -Jorge Luis López
- *         -José Ramón Gallego
+ * -Pablo Salvador Del Río Vergara
+ * -Ángel Acedo Moreno
+ * -Javier Tienda
+ * -Jorge Luis López
+ * -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains information about SendMailWindow
@@ -40,14 +44,14 @@ public class SendMailWindow extends JFrame implements Windows {
     public void createPanels(int numPanels) {
         for (int i = 0; i < numPanels; i++) {
             JPanel panel = new JPanel();
-            switch (i){
+            switch (i) {
                 case 0: //Main Panel
                     panel.setLayout(new BoxLayout(panel, Y_AXIS));
                     panels.add(panel);
                     break;
                 case 1: //Buttons panel
-                    panel.setLayout(new BorderLayout(20,20));
-                    panel.setBorder(new EmptyBorder(10,0,0,0));
+                    panel.setLayout(new BorderLayout(20, 20));
+                    panel.setBorder(new EmptyBorder(10, 0, 0, 0));
                     panels.add(panel);
                     break;
             }
@@ -77,7 +81,7 @@ public class SendMailWindow extends JFrame implements Windows {
     @Override
     public void createTextArea(int numTextArea) {
         for (int i = 0; i < numTextArea; i++) {
-            JTextArea txtA = new JTextArea(10,50);
+            JTextArea txtA = new JTextArea(10, 50);
             txtA.setLineWrap(true);
             textAreas.add(txtA);
         }
@@ -85,9 +89,9 @@ public class SendMailWindow extends JFrame implements Windows {
 
     @Override
     public void setDifferentProperties() {
-        this.getContentPane().setBackground(new Color(42,42,42));
-        this.panels.get(0).setBackground(new Color(12,15,65));
-        this.panels.get(1).setBackground(new Color(12,15,65));
+        this.getContentPane().setBackground(new Color(42, 42, 42));
+        this.panels.get(0).setBackground(new Color(12, 15, 65));
+        this.panels.get(1).setBackground(new Color(12, 15, 65));
         this.setIconImage(new ImageIcon("src/modelo/resources/ftp.png").getImage());
         this.setSize(model.getSENDMAILWINDOWWIDTH(), model.getSENDMAILWINDOWHEIGTH());
         this.setLayout(new FlowLayout());

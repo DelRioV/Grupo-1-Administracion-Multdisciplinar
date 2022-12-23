@@ -40,36 +40,12 @@ public class EMail {
         plainText += text + "\n";
     }
 
-    public String getPlainText() {
-        return plainText;
-    }
-
     public void addHTMLText(String text) {
         htmlText += text + "\n";
     }
 
-    public String getHTMLText() {
-        return htmlText;
-    }
-
     public void addAttachment(BodyPart bodyPart) {
         attachments.add(bodyPart);
-    }
-
-    public ArrayList<BodyPart> getAttachments() {
-        return attachments;
-    }
-
-    public BodyPart getAttachment(int index) {
-        return attachments.get(index);
-    }
-
-    public boolean hasAttachments() {
-        return (attachments.size()>0);
-    }
-
-    public int countAttachments() {
-        return attachments.size();
     }
 
     /**

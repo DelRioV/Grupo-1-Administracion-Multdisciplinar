@@ -47,8 +47,7 @@ public class MenuData {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
-        //this.emailKey = new Encrypt().decrypt(emailKey);
-        this.emailKey = emailKey;
+        this.emailKey = new Encrypt().decrypt(emailKey);
         //para ver los comandos que se originan
         getClient().addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         getClient().connect(getServer()); //conexión al servidor

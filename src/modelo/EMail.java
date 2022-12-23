@@ -9,6 +9,7 @@ import javax.mail.MessagingException;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains information about emails

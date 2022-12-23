@@ -10,6 +10,7 @@ import java.sql.Statement;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains methods to connect to the database

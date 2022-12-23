@@ -13,6 +13,7 @@ import java.io.*;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains methods that download files to your PC from the FTPServer
@@ -68,7 +69,6 @@ public class DownloadFile implements ActionListener {
         int returnVal = f.showDialog(null, "Descargar");
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             file = f.getSelectedFile();
-
             folder = (file.getAbsolutePath()).toString(); //Carpeta donde se guardara el archivo
             fullRute = folder + File.separator + nombreFichero;  // Ruta completa
             System.out.println(fullRute);

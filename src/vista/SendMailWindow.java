@@ -11,6 +11,7 @@ import static javax.swing.BoxLayout.Y_AXIS;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains information about SendMailWindow

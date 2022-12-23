@@ -1,11 +1,10 @@
 package controlador;
 import modelo.MenuData;
 import modelo.Modelo;
-import vista.UploadFilesAuxWindow;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 /**
  * @author -Ismael Orellana Bello
@@ -13,6 +12,7 @@ import java.io.IOException;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains methods with the events for the aux window to upload

@@ -21,6 +21,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  * -Ángel Acedo Moreno
  * -Javier Tienda
  * -Jorge Luis López
+ * -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * Class that controls the SendMailWindow

@@ -19,6 +19,7 @@ import java.util.Locale;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * BDLogic It is a class that contains all the logic that has to do with the database.

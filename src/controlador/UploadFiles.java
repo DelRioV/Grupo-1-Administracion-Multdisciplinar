@@ -12,6 +12,7 @@ import java.io.IOException;
  *         -Ángel Acedo Moreno
  *         -Javier Tienda
  *         -Jorge Luis López
+ *         -José Ramón Gallego
  * @version 1.0
  * @date 23/12/2022
  * That class contains methods to upload files to the ftpServer
